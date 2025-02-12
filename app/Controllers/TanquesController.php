@@ -51,7 +51,7 @@ class TanquesController extends BaseController
         return view('tanques_list', $data);
     }
 
-    public function saveTanque($id = null)
+    public function saveTanques($id = null)
     {
         $tanquesModel = new TanquesModel();
         helper(['form', 'url']);
