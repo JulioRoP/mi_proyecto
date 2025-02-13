@@ -783,6 +783,21 @@ License: For each use you must have a valid license purchased only from above li
 				<!--end::Footer-->
 			</div>
 			<!--end::Aside-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
 			<!--begin::Wrapper-->
 			<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 				<!--begin::Header-->
