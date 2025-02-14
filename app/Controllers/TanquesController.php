@@ -99,17 +99,43 @@ class TanquesController extends BaseController
         return view('tanques_form', $data);
     }
 
+    // public function baja($id)
+    // {
+    //     $tanquesModel = new TanquesModel();
+
+    //     // Obtener la fecha actual
+    //     $fechaBaja = date('Y-m-d');
+
+    //     // Actualizar el campo FECHA_BAJA con la fecha actual
+    //     $tanquesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+
+    //     // Redirigir al listado con un mensaje de éxito
+    //     return redirect()->to('/tanques')->with('success', 'Tanque dado de baja correctamente.');
+    // }
+
+
     public function baja($id)
     {
         $tanquesModel = new TanquesModel();
+        $tanque = $tanquesModel->find($id); // Obtener el tanque actual
 
-        // Obtener la fecha actual
-        $fechaBaja = date('Y-m-d');
+        if (is_null($tanque['FECHA_BAJA'])) {
+            // Obtener la fecha actual
+            $fechaBaja = date('Y-m-d');
 
-        // Actualizar el campo FECHA_BAJA con la fecha actual
-        $tanquesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+            // Actualizar el campo FECHA_BAJA con la fecha actual
+            $tanquesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
 
-        // Redirigir al listado con un mensaje de éxito
-        return redirect()->to('/tanques')->with('success', 'Tanque dado de baja correctamente.');
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/tanques')->with('success', 'Tanque dado de baja correctamente.');
+        } else {
+            // Si FECHA_BAJA no es null, dar de alta (poner FECHA_BAJA a null)
+            $tanquesModel->update($id, ['FECHA_BAJA' => null]);
+
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/tanques')->with('success', 'Tanque dado de alta correctamente.');
+        }
     }
+
 }
+

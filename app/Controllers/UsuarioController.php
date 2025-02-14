@@ -144,18 +144,41 @@ class UsuarioController extends BaseController
         return view('usuario_form', $data);
     }
 
+    // public function baja($id)
+    // {
+    //     $usuarioModel = new UsuarioModel();
+        
+    //     // Obtener la fecha actual
+    //     $fechaBaja = date('Y-m-d');
+
+    //     // Actualizar el campo FECHA_BAJA con la fecha actual
+    //     $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+
+    //     // Redirigir al listado con un mensaje de éxito
+    //     return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
+    // }
     public function baja($id)
     {
         $usuarioModel = new UsuarioModel();
-        
-        // Obtener la fecha actual
-        $fechaBaja = date('Y-m-d');
-
-        // Actualizar el campo FECHA_BAJA con la fecha actual
-        $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-
-        // Redirigir al listado con un mensaje de éxito
-        return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
+        $usuario = $usuarioModel->find($id); // Obtener el usuario actual
+    
+        if (is_null($usuario['FECHA_BAJA'])) {
+            // Obtener la fecha actual
+            $fechaBaja = date('Y-m-d');
+    
+            // Actualizar el campo FECHA_BAJA con la fecha actual
+            $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
+        } else {
+            // Si FECHA_BAJA no es null, dar de alta (poner FECHA_BAJA a null)
+            $usuarioModel->update($id, ['FECHA_BAJA' => null]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/usuarios')->with('success', 'Usuario dado de alta correctamente.');
+        }
     }
+    
 
 }

@@ -52,7 +52,7 @@ License: For each use you must have a valid license purchased only from above li
 				<!--begin::Brand-->
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
-					<a href="../../demo1/dist/index.html">
+					<a href="http://localhost/mi_proyecto/public/">
 						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
 					</a>
 					<!--end::Logo-->
@@ -1033,37 +1033,32 @@ License: For each use you must have a valid license purchased only from above li
 												<h1 class="text-center">Listado de Tanques</h1><br><br>
 
                                                 <?php foreach ($tanques as $tanque): ?>
-                                                    <tr>
-                                                        <td><?= esc($tanque['CAPACIDAD']) ?></td>
-                                                        <td><?= esc($tanque['LOCALIZACION']) ?></td>
-                                                        <td><?= esc($tanque['TIPO_AGUA']) ?></td>
-                                                        <td class="text-end">
-                                                        <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Modificar
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
-																	<!--end::Svg Icon-->
+												<tr>
+													<td><?= esc($tanque['CAPACIDAD']) ?></td>
+													<td><?= esc($tanque['LOCALIZACION']) ?></td>
+													<td><?= esc($tanque['TIPO_AGUA']) ?></td>
+													<td class="text-end">
+														<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Modificar
+															<span class="svg-icon svg-icon-5 m-0">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																</svg>
+															</span>
+														</a>
+														<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+															<div class="menu-item px-3">
+																<a href="<?= base_url('tanques/save/' . $tanque['ID_TANQUE']) ?>" class="menu-link px-3">Editar</a>
+															</div>
+															<div class="menu-item px-3">
+																<a href="<?= base_url('tanques/baja/' . esc($tanque['ID_TANQUE'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($tanque['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este tanque?');">
+																	<?= is_null($tanque['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
 																</a>
-																<!--begin::Menu-->
-																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('tanques/save/' . $tanque['ID_TANQUE']) ?>" class="menu-link px-3">Editar</a>
-																	</div>
-																	<!--end::Menu item-->
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('tanques/baja/' . esc($tanque['ID_TANQUE'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de dar de baja este tanque?');">Dar de baja</a>
-																	</div>
-																	<!--end::Menu item-->
-																</div>
-																<!--end::Menu-->
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<?php endforeach; ?>
+
 
 												<?php if (session()->getFlashdata('success')): ?>
 													<script>

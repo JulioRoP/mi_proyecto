@@ -124,17 +124,40 @@ class PecesController extends BaseController
         return view('peces_form', $data);
     }
 
+    // public function baja($id)
+    // {
+    //     $pecesModel = new PecesModel();
+
+    //     // Obtener la fecha actual
+    //     $fechaBaja = date('Y-m-d');
+
+    //     // Actualizar el campo FECHA_BAJA con la fecha actual
+    //     $pecesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+
+    //     // Redirigir al listado con un mensaje de éxito
+    //     return redirect()->to('/peces')->with('success', 'Pez dado de baja correctamente.');
+    // }  
     public function baja($id)
     {
         $pecesModel = new PecesModel();
-
-        // Obtener la fecha actual
-        $fechaBaja = date('Y-m-d');
-
-        // Actualizar el campo FECHA_BAJA con la fecha actual
-        $pecesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-
-        // Redirigir al listado con un mensaje de éxito
-        return redirect()->to('/peces')->with('success', 'Pez dado de baja correctamente.');
-    }  
+        $pez = $pecesModel->find($id); // Obtener el pez actual
+    
+        if (is_null($pez['FECHA_BAJA'])) {
+            // Obtener la fecha actual
+            $fechaBaja = date('Y-m-d');
+    
+            // Actualizar el campo FECHA_BAJA con la fecha actual
+            $pecesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/peces')->with('success', 'Pez dado de baja correctamente.');
+        } else {
+            // Si FECHA_BAJA no es null, dar de alta (poner FECHA_BAJA a null)
+            $pecesModel->update($id, ['FECHA_BAJA' => null]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/peces')->with('success', 'Pez dado de alta correctamente.');
+        }
+    }
+    
 }

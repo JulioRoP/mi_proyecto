@@ -52,7 +52,7 @@ License: For each use you must have a valid license purchased only from above li
 				<!--begin::Brand-->
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
-					<a href="../../demo1/dist/index.html">
+					<a href="http://localhost/mi_proyecto/public/">
 						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
 					</a>
 					<!--end::Logo-->
@@ -1053,7 +1053,9 @@ License: For each use you must have a valid license purchased only from above li
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de dar de baja este usuario?');">Dar de baja</a>
+																		<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
+																			<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																		</a>
 																	</div>
 																	<!--end::Menu item-->
 																</div>

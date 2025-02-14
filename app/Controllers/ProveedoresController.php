@@ -104,17 +104,40 @@ class ProveedoresController extends BaseController
         return view('proveedores_form', $data);
     }
 
+    // public function baja($id)
+    // {
+    //     $proveedoresModel = new ProveedoresModel();
+
+    //     // Obtener la fecha actual
+    //     $fechaBaja = date('Y-m-d');
+
+    //     // Actualizar el campo FECHA_BAJA con la fecha actual
+    //     $proveedoresModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+
+    //     // Redirigir al listado con un mensaje de éxito
+    //     return redirect()->to('/proveedores')->with('success', 'Proveedor dado de baja correctamente.');
+    // }
     public function baja($id)
     {
         $proveedoresModel = new ProveedoresModel();
-
-        // Obtener la fecha actual
-        $fechaBaja = date('Y-m-d');
-
-        // Actualizar el campo FECHA_BAJA con la fecha actual
-        $proveedoresModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-
-        // Redirigir al listado con un mensaje de éxito
-        return redirect()->to('/proveedores')->with('success', 'Proveedor dado de baja correctamente.');
+        $proveedor = $proveedoresModel->find($id); // Obtener el proveedor actual
+    
+        if (is_null($proveedor['FECHA_BAJA'])) {
+            // Obtener la fecha actual
+            $fechaBaja = date('Y-m-d');
+    
+            // Actualizar el campo FECHA_BAJA con la fecha actual
+            $proveedoresModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/proveedores')->with('success', 'Proveedor dado de baja correctamente.');
+        } else {
+            // Si FECHA_BAJA no es null, dar de alta (poner FECHA_BAJA a null)
+            $proveedoresModel->update($id, ['FECHA_BAJA' => null]);
+    
+            // Redirigir al listado con un mensaje de éxito
+            return redirect()->to('/proveedores')->with('success', 'Proveedor dado de alta correctamente.');
+        }
     }
+    
 }
