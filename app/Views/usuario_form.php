@@ -911,10 +911,10 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="nombre_usuario" class="fs-6 fw-bold mb-2">Nombre Del Usuario</label>
+															<label for="nombre" class="fs-6 fw-bold mb-2">Nombre Del Usuario</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control form-control-solid"
+															<input type="text" name="nombre" id="nombre" class="form-control form-control-solid"
 																value="<?= isset($usuario) ? esc($usuario['NOMBRE_USUARIO']) : '' ?>" required>
 															<!--end::Input-->
 														</div>
@@ -931,10 +931,10 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="contraseña_hash" class="fs-6 fw-bold mb-2">Contraseña</label>
+															<label for="contraseña" class="fs-6 fw-bold mb-2">Contraseña</label>
 															<!--end::Label-->
 															<!--begin::Input-->
-															<input type="text" step="any" name="contraseña_hash" id="contraseña_hash" class="form-control form-control-solid"
+															<input type="text" step="any" name="contraseña" id="contraseña" class="form-control form-control-solid"
 																value="<?= isset($usuario) ? esc($usuario['CONTRASEÑA_HASH']) : '' ?>" required>
 															<!--end::Input-->
 														</div>
@@ -956,8 +956,8 @@ License: For each use you must have a valid license purchased only from above li
 															<!--begin::Input-->
 															<select name="rol" id="rol" class="form-control form-control-solid" required>
 																<option value="" disabled selected>Rol</option>
-																<option value="administrador" <?= isset($pez) && $pez['ROL'] == 'neutra' ? 'selected' : '' ?>>Administrador</option>
-																<option value="visitante" <?= isset($pez) && $pez['ROL'] == 'mixta' ? 'selected' : '' ?>>Visitante</option>
+																<option value="administrador" <?= isset($pez) && $pez['ROL'] == 'administrador' ? 'selected' : '' ?>>Administrador</option>
+																<option value="visitante" <?= isset($pez) && $pez['ROL'] == 'visitante' ? 'selected' : '' ?>>Visitante</option>
 															</select>
 															<!--end::Input-->
 														</div>

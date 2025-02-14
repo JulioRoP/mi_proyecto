@@ -917,7 +917,7 @@ License: For each use you must have a valid license purchased only from above li
 
                                                                 <!-- Campo Email -->
                                                                 <div class="mb-3">
-                                                                    <input type="email" name="EMAIL" class="form-control" placeholder="Email" value="<?= $emailBusqueda ?>">
+                                                                    <input type="text" name="EMAIL" class="form-control" placeholder="Email" value="<?= $emailBusqueda ?>">
                                                                 </div>
 
                                                                 <!-- Select para Estado -->

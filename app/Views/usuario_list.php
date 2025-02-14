@@ -907,7 +907,7 @@ License: For each use you must have a valid license purchased only from above li
 
 																	<!-- Campo Fecha de Nacimiento -->
 																	<div class="mb-3">
-																		<input type="email" name="EMAIL" class="form-control" placeholder="Email" value="<?= isset($emailUsuarioBusqueda) ? $emailUsuarioBusqueda : '' ?>">
+																		<input type="text" name="EMAIL" class="form-control" placeholder="Email" value="<?= isset($emailUsuarioBusqueda) ? $emailUsuarioBusqueda : '' ?>">
 																	</div>
 
 																	<!-- Campo Peso -->
@@ -1030,7 +1030,8 @@ License: For each use you must have a valid license purchased only from above li
 														<tr>
 															<td><?= esc($usuario['NOMBRE_USUARIO']) ?></td>
 															<td><?= esc($usuario['EMAIL']) ?></td>
-															<td><?= esc($usuario['CONTRASEÑA_HASH']) ?></td>
+															<!-- <td><?= esc($usuario['CONTRASEÑA_HASH']) ?></td> mirar-->
+															<td><?= substr($usuario['CONTRASEÑA_HASH'], 0, 10) . '...'; ?>															</td>
 															<td><?= esc($usuario['FECHA_REGISTRO']) ?></td>
 															<td><?= esc($usuario['ID_ROL']) ?></td>
 															<td class="text-end">
