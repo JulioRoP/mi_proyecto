@@ -1,5 +1,5 @@
 <?php helper('form'); ?>
-
+<!-- funcion para cargar el formulario -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,6 +31,9 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre de usuario</label>
                                 <input type="text" class="form-control" name="name" value="<?= set_value('name') ?>" required>
+                                <?php if (isset($validation) && $validation->getError('name')): ?>
+                                    <div class="text-danger"><?= $validation->getError('name') ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>

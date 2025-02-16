@@ -13,7 +13,7 @@ class RegistroController extends BaseController
 
     public function processRegister()
     {
-        helper(['form', 'url']);
+        helper(['form', 'url']);//para cargar bien el formulario
 
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
@@ -23,7 +23,7 @@ class RegistroController extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return view('register', [
+            return view('registro', [
                 'validation' => $this->validator,
             ]);
         }

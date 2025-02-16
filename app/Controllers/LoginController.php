@@ -36,11 +36,12 @@ class LoginController extends BaseController
                 'id' => $user['ID_USUARIO'],
                 'name' => $user['NOMBRE_USUARIO'],
                 'email' => $user['EMAIL'],
+                'id_rol' => $user['ID_ROL'], // Guardar el ID del rol en la sesión
                 'isLoggedIn' => true,
                 'created_at' => $user['FECHA_REGISTRO'],
             ]);
 
-            return redirect()->to('/dashboard')->with('success', 'Inicio de sesión exitoso.');
+            return redirect()->to('/')->with('success', 'Inicio de sesión exitoso.');
         }
 
         // Si las credenciales son incorrectas, se muestra un error.
