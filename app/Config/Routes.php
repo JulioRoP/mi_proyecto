@@ -95,7 +95,12 @@ $routes->get('register', 'RegistroController::register'); // Muestra el formular
 $routes->post('register/process', 'RegistroController::processRegister'); // Procesa el formulario de registro
 
 
+//calendario-----------------------------------------------------
+$routes->get('/fetch-events', 'EventController::fetchEvents');
+$routes->post('/add-event', 'EventController::addEvent');
+$routes->delete('/delete-event/(:num)', 'EventController::deleteEvent/$1');
 
+$routes->get('/calendar', 'EventController::showCalendar');
 
 
 

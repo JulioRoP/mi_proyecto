@@ -489,7 +489,12 @@ License: For each use you must have a valid license purchased only from above li
 
                                                 <?php foreach ($tanques as $tanque): ?>
 												<tr>
-													<td><?= esc($tanque['CAPACIDAD']) ?></td>
+													<td>
+														<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
+														<span class="<?= !is_null($tanque['FECHA_BAJA']) ? 'text-danger' : '' ?>">
+															<?= esc($tanque['CAPACIDAD']) ?>
+														</span>
+													</td>
 													<td><?= esc($tanque['LOCALIZACION']) ?></td>
 													<td><?= esc($tanque['TIPO_AGUA']) ?></td>
 													<td class="text-end">
