@@ -6,15 +6,12 @@ use App\Models\EventModel;
 
 class EventController extends BaseController
 {
+    // Método para mostrar el calendario
     public function showCalendar()
     {
-    return view('calendar');
+        return view('calendar');
     }
 
-    public function test()
-{
-    return 'Test method';
-}
     // Método para obtener todos los eventos
     public function fetchEvents()
     {
@@ -26,8 +23,7 @@ class EventController extends BaseController
     // Método para agregar un nuevo evento
     public function addEvent()
     {
-        $model = new EventModel();
-
+        // Obtén los datos del POST
         $data = [
             'TITULO' => $this->request->getPost('TITULO'),
             'FECHA_INICIO' => $this->request->getPost('FECHA_INICIO'),
@@ -37,6 +33,9 @@ class EventController extends BaseController
             'FECHA_ELIMINACION' => null,
         ];
 
+        $model = new EventModel();
+
+        // Insertar el evento en la base de datos
         if ($model->insert($data)) {
             return $this->response->setJSON(['success' => 'Evento agregado exitosamente']);
         } else {
@@ -49,6 +48,13 @@ class EventController extends BaseController
     {
         $model = new EventModel();
 
+        // Verificar si el evento existe
+        $event = $model->find($id);
+        if (!$event) {
+            return $this->response->setJSON(['error' => 'Evento no encontrado'], 404);
+        }
+
+        // Eliminar el evento
         if ($model->delete($id)) {
             return $this->response->setJSON(['success' => 'Evento eliminado exitosamente']);
         } else {

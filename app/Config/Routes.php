@@ -96,11 +96,15 @@ $routes->post('register/process', 'RegistroController::processRegister'); // Pro
 
 
 //calendario-----------------------------------------------------
-$routes->get('/fetch-events', 'EventController::fetchEvents');
-$routes->post('/add-event', 'EventController::addEvent');
-$routes->delete('/delete-event/(:num)', 'EventController::deleteEvent/$1');
+// $routes->get('/fetch-events', 'EventController::fetchEvents');
+// $routes->post('/add-event', 'EventController::addEvent');
+// $routes->delete('/delete-event/(:num)', 'EventController::deleteEvent/$1');
+// $routes->get('/calendar', 'EventController::showCalendar');
 
-$routes->get('/calendar', 'EventController::showCalendar');
+$routes->get('/calendar', 'EventController::showCalendar'); // Mostrar el calendario
+$routes->get('/fetch-events', 'EventController::fetchEvents'); // Obtener eventos
+$routes->post('/add-event', 'EventController::addEvent'); // Agregar un evento
+$routes->delete('/delete-event/(:num)', 'EventController::deleteEvent/$1'); // Eliminar un evento
 
 
 
