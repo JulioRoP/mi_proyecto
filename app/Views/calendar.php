@@ -57,6 +57,26 @@ License: For each use you must have a valid license purchased only from above li
 
 	<!-- FullCalendar CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+	<!-- <style>
+    .fc-event {
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: unset !important;
+	}
+
+	.fc-event:hover::after {
+		content: attr(title);
+		position: absolute;
+		background: rgba(0, 0, 0, 0.8);
+		color: #fff;
+		padding: 5px;
+		border-radius: 5px;
+		font-size: 12px;
+		white-space: nowrap;
+		z-index: 100;
+		transform: translateY(-100%);
+	}
+</style> -->
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -275,7 +295,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista Peces</h1>
+									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Calendario</h1>
 									<!--end::Title-->
 									<!--begin::Separator-->
 									<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -284,7 +304,7 @@ License: For each use you must have a valid license purchased only from above li
 									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 										<!--begin::Item-->
 										<li class="breadcrumb-item text-muted">
-											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+											<a href="http://localhost/mi_proyecto/public/" class="text-muted text-hover-primary">Home</a>
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
@@ -293,25 +313,9 @@ License: For each use you must have a valid license purchased only from above li
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Administrador</li>
+										
 										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-200 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Bases</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-200 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Lista Peces</li>
-										<!--end::Item-->
-										<li class="breadcrumb-item text-dark">Crear Peces</li>
+										<li class="breadcrumb-item text-dark">Calendario</li>
 									</ul>
 									<!--end::Breadcrumb-->
 								</div>
@@ -352,9 +356,86 @@ License: For each use you must have a valid license purchased only from above li
 											<div class="container mt-5">
 												<h2>Calendario Dinámico</h2>
 												<div id="calendar"></div>
+												
 											</div><br>
 
-											
+											<!-- Modal para agregar evento -->
+											<!-- <div id="eventModal" style="display: none;">
+												<div class="modal-content">
+													<h4>Agregar Evento</h4>
+													<label for="title">Título del evento:</label>
+													<input type="text" id="eventTitle" placeholder="Título del evento" required>
+
+													<label for="description">Descripción:</label>
+													<textarea id="eventDescription" placeholder="Descripción del evento" required></textarea>
+
+													<button id="saveEvent">Guardar evento</button>
+													<button id="cancelEvent">Cancelar</button>
+												</div>
+											</div> -->
+
+
+										<!-- Modal para agregar evento -->
+										<div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<!-- Modal Header -->
+													<div class="modal-header">
+														<h5 class="modal-title" id="modalTitle">Agregar Evento</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+
+													<!-- Modal Body -->
+													<div class="modal-body">
+														<!-- Formulario para agregar evento -->
+														<div class="mb-3">
+															<label for="eventTitle" class="form-label">Título del evento</label>
+															<input type="text" class="form-control" id="eventTitle" placeholder="Ingrese el título del evento">
+														</div>
+
+														<div class="mb-3">
+															<label for="eventDescription" class="form-label">Descripción</label>
+															<textarea class="form-control" id="eventDescription" rows="3" placeholder="Ingrese la descripción del evento"></textarea>
+														</div>
+
+														<div class="mb-3">
+															<label for="eventStart" class="form-label">Fecha de inicio</label>
+															<input type="datetime-local" class="form-control" id="eventStart">
+														</div>
+
+														<div class="mb-3">
+															<label for="eventEnd" class="form-label">Fecha de fin</label>
+															<input type="datetime-local" class="form-control" id="eventEnd">
+														</div>
+													</div>
+
+													<!-- Modal Footer -->
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+														<button type="button" class="btn btn-primary" id="saveEvent">Guardar evento</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Modal de confirmación de eliminación -->
+										<div class="modal fade" id="deleteEventModal" tabindex="-1" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title">Confirmación de eliminación</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<p>¿Estás seguro de que deseas eliminar este evento?</p>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" id="cancelDeleteEvent" data-bs-dismiss="modal">Cancelar</button>
+														<button type="button" class="btn btn-danger" id="confirmDeleteEvent">Eliminar</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
 <!-- ------------------------------------------------------------------------------------- -->
 
 											<!-- Metronic JS -->
@@ -367,8 +448,8 @@ License: For each use you must have a valid license purchased only from above li
 											
 
 											<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+											<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+											<!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script> dede-->
 
 		
 
@@ -385,12 +466,12 @@ License: For each use you must have a valid license purchased only from above li
 														// Cargar eventos desde el servidor
 														events: function(fetchInfo, successCallback, failureCallback) {
 															$.ajax({
-																url: "<?= base_url('fetch-events') ?>",  // Usa base_url para rutas correctas
+																url: "<?= base_url('/') ?>fetch-events",
 																type: "GET",
 																dataType: "json",
 																success: function(data) {
 																	let events = data.map(event => ({
-																		id: event.ID_EVENTO,
+																		id: event.PK_ID_EVENTO,
 																		title: event.TITULO,
 																		start: event.FECHA_INICIO,
 																		end: event.FECHA_FIN
@@ -404,67 +485,127 @@ License: For each use you must have a valid license purchased only from above li
 															});
 														},
 
-														// Añadir evento
+														// Mostrar el modal para agregar un evento
 														select: function(info) {
-															const title = prompt('Título del evento:');
-															if (title) {
-																$.ajax({
-																	url: "<?= base_url('add-event') ?>", // Asegura la URL correcta
-																	type: "POST",
-																	contentType: "application/json", // Indica que se envía JSON
-																	data: JSON.stringify({
-																		TITULO: title,
-																		FECHA_INICIO: info.startStr,
-																		FECHA_FIN: info.endStr
-																	}),
-																	success: function(response) {
-																		alert(response.success);
-																		calendar.refetchEvents();
-																	},
-																	error: function(xhr) {
-																		console.error("Error al agregar evento:", xhr.responseText);
-																		alert("Error al agregar el evento.");
-																	}
-																});
-															}
-														},
-														
-														// Eliminar evento
-														// eventClick: function(info) {
-														// 	if (confirm('¿Deseas eliminar este evento?')) {
-														// 		$.ajax({
-														// 			url: "<?= base_url('delete-event/') ?>" + info.event.id,
-														// 			type: "DELETE",
-														// 			success: function(response) {
-														// 				alert(response.success);
-														// 				info.event.remove();
-														// 			},
-														// 			error: function(xhr) {
-														// 				console.error("Error al eliminar evento:", xhr.responseText);
-														// 				alert("Error al eliminar el evento.");
-														// 			}
-														// 		});
-														eventClick: function(info) {
-															if (confirm('¿Deseas eliminar este evento?')) {
-																$.ajax({
-																url: "/public/delete-event/" + info.event.id,  // Asegúrate de que "/public" esté incluido si la ruta de tu servidor lo requiere
-																type: "DELETE",  // Método HTTP DELETE
-																success: function(response) {
-																	alert(response.success);
-																	info.event.remove();  // Eliminar el evento del calendario
-																},
-																error: function() {
-																	alert("Error al eliminar el evento.");
+															// Limpiar los campos del modal
+															$('#eventTitle').val('');
+															$('#eventDescription').val('');
+
+															// Formatear la fecha seleccionada
+															let fechaSeleccionada = moment(info.start).format('YYYY-MM-DDTHH:mm');
+
+															// Asignar solo la fecha de inicio y dejar la fecha de fin vacía
+															$('#eventStart').val(fechaSeleccionada);
+															$('#eventEnd').val(''); // Fecha de fin vacía para que el usuario la seleccione
+
+															// Mostrar el modal
+															$('#eventModal').modal('show');
+
+															// Guardar evento
+															$('#saveEvent').off('click').on('click', function() {
+																const title = $('#eventTitle').val();
+																const description = $('#eventDescription').val();
+																const fechaInicio = $('#eventStart').val();
+																const fechaFin = $('#eventEnd').val(); // Puede estar vacío
+
+																if (title && description) {
+																	$.ajax({
+																		url: "<?= base_url('/') ?>add-event",
+																		type: "POST",
+																		contentType: "application/json",
+																		data: JSON.stringify({
+																			TITULO: title,
+																			FECHA_INICIO: fechaInicio,
+																			FECHA_FIN: fechaFin || null, // Si está vacío, se envía como null
+																			DESCRIPCION_ES: description,
+																			DESCRIPCION_ENG: description
+																		}),
+																		success: function(response) {
+																			Swal.fire({
+																				icon: 'success',
+																				title: 'Evento Agregado',
+																				text: 'El evento se ha agregado correctamente al calendario.',
+																				timer: 2000
+																			});
+
+																			calendar.refetchEvents();
+																			$('#eventModal').modal('hide');
+																		},
+																		error: function(xhr) {
+																			console.error("Error al agregar evento:", xhr.responseText);
+																			Swal.fire({
+																				icon: 'error',
+																				title: 'Error',
+																				text: 'Hubo un problema al agregar el evento.',
+																				timer: 2000
+																			});
+																		}
+																	});
+																} else {
+																	Swal.fire({
+																		icon: 'warning',
+																		title: 'Campos incompletos',
+																		text: 'Por favor, ingresa todos los datos del evento.',
+																		timer: 2000
+																	});
 																}
 															});
-															}
+														},
+														eventDidMount: function(info) {
+															$(info.el).tooltip({
+																title: info.event.title, // Muestra el título completo en un tooltip
+																placement: "top",
+																trigger: "hover",
+																container: "body"
+															});
+														},
+														// Manejar la eliminación de un evento al hacer clic sobre él
+														eventClick: function(info) {
+															$('#deleteEventModal').modal('show');
+
+															$('#confirmDeleteEvent').off('click').on('click', function() {
+																$.ajax({
+																	url: "<?= base_url('/') ?>delete-event/" + info.event.id,
+																	type: "DELETE",
+																	success: function(response) {
+																		Swal.fire({
+																			icon: 'success',
+																			title: 'Evento Eliminado',
+																			text: 'El evento ha sido eliminado correctamente.',
+																			timer: 2000
+																		});
+
+																		info.event.remove();
+																		$('#deleteEventModal').modal('hide');
+																	},
+																	error: function() {
+																		Swal.fire({
+																			icon: 'error',
+																			title: 'Error',
+																			text: 'Hubo un problema al eliminar el evento.',
+																			timer: 2000
+																		});
+																	}
+																});
+															});
+
+															$('#cancelDeleteEvent').off('click').on('click', function() {
+																$('#deleteEventModal').modal('hide');
+															});
 														}
 													});
 
-													
 													calendar.render();
 												});
+											
+												
+
 											</script>
+
+
+
+
+
 
 
 

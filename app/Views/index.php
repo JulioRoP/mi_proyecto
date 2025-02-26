@@ -793,7 +793,7 @@ License: For each use you must have a valid license purchased only from above li
 
 									<!-- Gráfico 3:   Peces  -->
 									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom">
+										<div class="card card-custom" style="max-height: 300px;">
 											<div class="card-body">
 												<h5 class="card-title">Número de Peces</h5>
 												<canvas id="chart3"></canvas>
@@ -803,7 +803,7 @@ License: For each use you must have a valid license purchased only from above li
 
 									<!-- Gráfico 4: Ventas  de Pescado -->
 									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom">
+										<div class="card card-custom" style="max-height: 300px;">
 											<div class="card-body">
 												<h5 class="card-title">Ventas Mensuales de Pescado</h5>
 												<canvas id="chart4"></canvas>

@@ -23,25 +23,44 @@ class EventController extends BaseController
     // Método para agregar un nuevo evento
     public function addEvent()
     {
-        // Obtén los datos del POST
-        $data = [
-            'TITULO' => $this->request->getPost('TITULO'),
-            'FECHA_INICIO' => $this->request->getPost('FECHA_INICIO'),
-            'FECHA_FIN' => $this->request->getPost('FECHA_FIN'),
-            'DESCRIPCION_ES' => $this->request->getPost('DESCRIPCION_ES'),
-            'DESCRIPCION_ENG' => $this->request->getPost('DESCRIPCION_ENG'),
-            'FECHA_ELIMINACION' => null,
+        // Obtener los datos enviados desde el cliente (en formato JSON)
+        $data = json_decode($this->request->getBody(), true);
+
+        // Extraer los campos de los datos enviados
+        $titulo = $data['TITULO'];
+        $fechaInicio = $data['FECHA_INICIO'];
+        $fechaFin = $data['FECHA_FIN'];
+        $descripcionEs = $data['DESCRIPCION_ES'];
+        $descripcionEng = $data['DESCRIPCION_ENG'];
+
+        // Validar que los campos requeridos no estén vacíos
+        if (!$titulo || !$fechaInicio || !$fechaFin || !$descripcionEs || !$descripcionEng) {
+            return $this->response->setJSON(['error' => 'Todos los campos son obligatorios'], 400);
+        }
+
+        // Preparar los datos para insertar en la base de datos
+        $eventData = [
+            'TITULO' => $titulo,
+            'FECHA_INICIO' => $fechaInicio,
+            'FECHA_FIN' => $fechaFin,
+            'DESCRIPCION_ES' => $descripcionEs,
+            'DESCRIPCION_ENG' => $descripcionEng,
+            'FECHA_ELIMINACION' => null
         ];
 
         $model = new EventModel();
 
         // Insertar el evento en la base de datos
-        if ($model->insert($data)) {
+        if ($model->insert($eventData)) {
             return $this->response->setJSON(['success' => 'Evento agregado exitosamente']);
         } else {
             return $this->response->setJSON(['error' => 'Error al agregar el evento'], 500);
         }
     }
+
+
+
+
 
     // Método para eliminar un evento
     public function deleteEvent($id)
