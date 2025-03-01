@@ -226,7 +226,7 @@ License: For each use you must have a valid license purchased only from above li
 								</span>
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
 									<div class="menu-item">
-										<a class="menu-link" href="http://localhost/mi_proyecto/public/index.php/tanques">
+										<a class="menu-link" href="http://localhost/mi_proyecto/public/tanques?CAPACIDAD=&LOCALIZACION=&TIPO_AGUA=&estado=activo">
 											<span class="menu-bullet">
 												<span class="bullet bullet-dot"></span>
 											</span>
@@ -245,7 +245,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 							</div>
 							<div data-kt-menu-trigger="click" class="menu-item menu-accordion show">
-								<span class="menu-link active"> <!-- Agregar 'active' aquí -->
+								<span class="menu-link"> <!-- Agregar 'active' aquí -->
 									<span class="menu-icon">
 									<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Picture.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										<title>Stockholm-icons / Home / Picture</title>
@@ -281,20 +281,8 @@ License: For each use you must have a valid license purchased only from above li
 				</div>
 				<!--end::Aside menu-->
 			</div>
-			<!--end::Aside-->
-
-
-			<!--begin::Wrapper-->
 			<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-				<!--begin::Header-->
-
-				<!--end::Header-->
-				<!--begin::Content-->
 				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-					<!--begin::Toolbar-->
-
-					<!--end::Toolbar-->
-					<!--begin::Post-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Toolbar-->
 						<div class="toolbar" id="kt_toolbar" style="top: 0px;">
@@ -314,15 +302,9 @@ License: For each use you must have a valid license purchased only from above li
 										<li class="breadcrumb-item text-muted">
 											<a href="http://localhost/mi_proyecto/public/" class="text-muted text-hover-primary">Home</a>
 										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
 										<li class="breadcrumb-item">
 											<span class="bullet bg-gray-200 w-5px h-2px"></span>
 										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										
-										<!--end::Item-->
 										<li class="breadcrumb-item text-dark">Calendario</li>
 									</ul>
 									<!--end::Breadcrumb-->
@@ -330,28 +312,13 @@ License: For each use you must have a valid license purchased only from above li
 								<!--end::Page title-->
 								<!--begin::Actions-->
 								<div class="d-flex align-items-center py-1">
-									<!--begin::Wrapper-->
-
-									<!--end::Wrapper-->
-									<!--begin::Button-->
-									<!--end::Button-->
-
 								</div>
-
 							</div>
 							<!--end::Container-->
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::Post-->
-
-
-
-
-
-
-
-
-
+					</div>
 						<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 							<div class="post d-flex flex-column-fluid" id="kt_post">
 								<div id="kt_content_container" class="container-xxl">
@@ -592,14 +559,6 @@ License: For each use you must have a valid license purchased only from above li
 												
 
 											</script>
-
-
-
-
-
-
-
-
 										</div>
 									</div>
 								</div>

@@ -100,163 +100,162 @@ License: For each use you must have a valid license purchased only from above li
 						</div>
 					</div>						
 					<!--begin::Menu-->
-						<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+					<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 
-							<div class="menu-item">
-								<div class="menu-content pt-8 pb-2">
-									<span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
+						<div class="menu-item">
+							<div class="menu-content pt-8 pb-2">
+								<span class="menu-section text-muted text-uppercase fs-8 ls-1">Piscifactoria</span>
+							</div>
+						</div>
+						<div data-kt-menu-trigger="click" class="menu-item menu-accordion show">
+							<span class="menu-link">
+								<span class="menu-icon">
+									<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+									<span class="svg-icon svg-icon-2">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black" />
+											<rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black" />
+										</svg>
+									</span>
+									<!--end::Svg Icon-->
+								</span>
+								<span class="menu-title">Personas</span>
+								<span class="menu-arrow"></span>
+							</span>
+							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<div class="menu-item">
+									<a class="menu-link active" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">Usuarios</span>
+									</a>
+								</div>
+								<div class="menu-item">
+									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">Proveedores</span>
+									</a>
 								</div>
 							</div>
-							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-								<span class="menu-link">
-									<span class="menu-icon">
-										<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-										<span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<path d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z" fill="black" />
-												<path d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z" fill="black" />
-												<path opacity="0.3" d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
+						</div>
+						<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+							<span class="menu-link">
+								<span class="menu-icon">
+									<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+									<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Earth.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<title>Stockholm-icons / Home / Earth</title>
+										<desc>Created with Sketch.</desc>
+										<defs/>
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="9"/>
+											<path d="M11.7357634,20.9961946 C6.88740052,20.8563914 3,16.8821712 3,12 C3,11.9168367 3.00112797,11.8339369 3.00336944,11.751315 C3.66233009,11.8143341 4.85636818,11.9573854 4.91262842,12.4204038 C4.9904938,13.0609191 4.91262842,13.8615942 5.45804656,14.101772 C6.00346469,14.3419498 6.15931561,13.1409372 6.6267482,13.4612567 C7.09418079,13.7815761 8.34086797,14.0899175 8.34086797,14.6562185 C8.34086797,15.222396 8.10715168,16.1034596 8.34086797,16.2636193 C8.57458427,16.423779 9.5089688,17.54465 9.50920913,17.7048097 C9.50956962,17.8649694 9.83857487,18.6793513 9.74040201,18.9906563 C9.65905192,19.2487394 9.24857641,20.0501554 8.85059781,20.4145589 C9.75315358,20.7620621 10.7235846,20.9657742 11.7357634,20.9960544 L11.7357634,20.9961946 Z M8.28272988,3.80112099 C9.4158415,3.28656421 10.6744554,3 12,3 C15.5114513,3 18.5532143,5.01097452 20.0364482,7.94408274 C20.069657,8.72412177 20.0638332,9.39135321 20.2361262,9.6327358 C21.1131932,10.8600506 18.0995147,11.7043158 18.5573343,13.5605384 C18.7589671,14.3794892 16.5527814,14.1196773 16.0139722,14.886394 C15.4748026,15.6527403 14.1574598,15.137809 13.8520064,14.9904917 C13.546553,14.8431744 12.3766497,15.3341497 12.4789081,14.4995164 C12.5805657,13.664636 13.2922889,13.6156126 14.0555619,13.2719546 C14.8184743,12.928667 15.9189236,11.7871741 15.3781918,11.6380045 C12.8323064,10.9362407 11.963771,8.47852395 11.963771,8.47852395 C11.8110443,8.44901109 11.8493762,6.74109366 11.1883616,6.69207022 C10.5267462,6.64279981 10.170464,6.88841096 9.20435656,6.69207022 C8.23764828,6.49572949 8.44144409,5.85743687 8.2887174,4.48255778 C8.25453994,4.17415686 8.25619136,3.95717082 8.28272988,3.80112099 Z M20.9991771,11.8770357 C20.9997251,11.9179585 21,11.9589471 21,12 C21,16.9406923 17.0188468,20.9515364 12.0895088,20.9995641 C16.970233,20.9503326 20.9337111,16.888438 20.9991771,11.8770357 Z" fill="#000000" opacity="0.3"/>
+										</g>
+										</svg><!--end::Svg Icon-->
 									</span>
-									<span class="menu-title">Bases de datos</span>
-									<span class="menu-arrow"></span>
+									<!--end::Svg Icon-->
 								</span>
-								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
-										<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Usuarios</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Peces</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="http://localhost/mi_proyecto/public/index.php/tanques">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Tanques</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Proveedores</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Pedidos</span>
-										</a>
-									</div>
-
+								<span class="menu-title">Productos</span>
+								<span class="menu-arrow"></span>
+							</span>
+							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<div class="menu-item">
+									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">Pedidos</span>
+									</a>
+								</div>
+								<div class="menu-item">
+									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">Peces</span>
+									</a>
 								</div>
 							</div>
-							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-								<span class="menu-link">
-									<span class="menu-icon">
-										<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
-										<span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<path d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z" fill="black" />
-												<rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-title">Account</span>
-									<span class="menu-arrow"></span>
+						</div>
+						<div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+							<span class="menu-link">
+								<span class="menu-icon">
+									<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+									<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Design/Saturation.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<title>Stockholm-icons / Design / Saturation</title>
+										<desc>Created with Sketch.</desc>
+										<defs/>
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"/>
+											<path d="M7,14 C7,16.7614237 9.23857625,19 12,19 C14.7614237,19 17,16.7614237 17,14 C17,12.3742163 15.3702913,9.86852817 12,6.69922982 C8.62970872,9.86852817 7,12.3742163 7,14 Z M12,21 C8.13400675,21 5,17.8659932 5,14 C5,11.4226712 7.33333333,8.08933783 12,4 C16.6666667,8.08933783 19,11.4226712 19,14 C19,17.8659932 15.8659932,21 12,21 Z" fill="#000000" fill-rule="nonzero"/>
+											<path d="M12,4 C16.6666667,8.08933783 19,11.4226712 19,14 C19,17.8659932 15.8659932,21 12,21 L12,4 Z" fill="#000000"/>
+										</g>
+									</svg><!--end::Svg Icon--></span>
+									<!--end::Svg Icon-->
 								</span>
-								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/overview.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Overview</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/settings.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Settings</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/security.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Security</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/billing.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Billing</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/statements.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Statements</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/referrals.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Referrals</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="../../demo1/dist/account/api-keys.html">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">API Keys</span>
-										</a>
-									</div>
+								<span class="menu-title">Tanques</span>
+								<span class="menu-arrow"></span>
+							</span>
+							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<div class="menu-item">
+									<a class="menu-link" href="http://localhost/mi_proyecto/public/tanques?CAPACIDAD=&LOCALIZACION=&TIPO_AGUA=&estado=activo">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">Tanques</span>
+									</a>
 								</div>
-							</div>							
+							</div>
+						</div>
+
 						</div>
 						<!--end::Menu-->
+						<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+							<div class="menu-item">
+								<div class="menu-content pt-8 pb-2">
+									<span class="menu-section text-muted text-uppercase fs-8 ls-1">Eventos</span>
+								</div>
+							</div>
+							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+								<span class="menu-link "> <!-- Agregar 'active' aquí -->
+									<span class="menu-icon">
+									<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Picture.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+										<title>Stockholm-icons / Home / Picture</title>
+										<desc>Created with Sketch.</desc>
+										<defs/>
+										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+											<polygon points="0 0 24 0 24 24 0 24"/>
+											<rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"/>
+											<polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"/>
+											<polygon fill="#000000" points="11 20 15.5 14 20 20"/>
+											<circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"/>
+										</g>
+									</svg><!--end::Svg Icon--></span>
+									</span>
+									<span class="menu-title">Calendario</span>
+									<span class="menu-arrow"></span>
+								</span>
+								<div class="menu-sub menu-sub-accordion menu-active-bg">
+									<div class="menu-item">
+										<a class="menu-link" href="http://localhost/mi_proyecto/public/calendar">
+											<span class="menu-bullet">
+												<span class="bullet bullet-dot"></span>
+											</span>
+											<span class="menu-title">Calendario</span>
+										</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
 					</div>
 					<!--end::Aside Menu-->
 				</div>
 				<!--end::Aside menu-->
 			</div>
-			<!--end::Aside-->
-					<!--end::Aside Menu-->
-				</div>
-				<!--end::Aside menu-->
-				<!--begin::Footer-->
-				
-				<!--end::Footer-->
-			</div>
-			<!--end::Aside-->
 			<!--begin::Wrapper-->
 			<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 				<!--begin::Header-->
