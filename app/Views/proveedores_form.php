@@ -386,7 +386,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="nombre_proveedor" id="nombre_proveedor" class="form-control form-control-solid"
-																value="<?= isset($proveedor) ? esc($proveedor['NOMBRE_PROVEEDOR']) : '' ?>" required>
+																value="<?= set_value('nombre_proveedor', isset($proveedor) ? esc($proveedor['NOMBRE_PROVEEDOR']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -396,7 +396,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="tipo_producto" id="tipo_producto" class="form-control form-control-solid"
-																value="<?= isset($proveedor) ? esc($proveedor['TIPO_PRODUCTO']) : '' ?>" required>
+																value="<?= set_value('tipo_producto', isset($proveedor) ? esc($proveedor['TIPO_PRODUCTO']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -406,7 +406,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" step="any" name="telefono" id="telefono" class="form-control form-control-solid"
-																value="<?= isset($proveedor) ? esc($proveedor['TELEFONO']) : '' ?>" required>
+																value="<?= set_value('telefono', isset($proveedor) ? esc($proveedor['TELEFONO']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -416,13 +416,14 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="email" step="any" name="email" id="email" class="form-control form-control-solid"
-																value="<?= isset($proveedor) ? esc($proveedor['EMAIL']) : '' ?>" required>
+																value="<?= set_value('email', isset($proveedor) ? esc($proveedor['EMAIL']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
 														<button type="submit" class="btn btn-primary"><?= isset($proveedor) ? 'Actualizar' : 'Guardar' ?></button>
 														<a href="<?= base_url('proveedores') ?>" class="btn btn-secondary">Cancelar</a>
 													</form>
+
 												</div>
 											</tbody>
 											<!--end::Table body-->

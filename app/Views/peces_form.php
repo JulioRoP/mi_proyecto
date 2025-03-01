@@ -388,7 +388,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="especie" id="especie" class="form-control form-control-solid"
-																value="<?= isset($pez) ? esc($pez['ESPECIE']) : '' ?>" required>
+																value="<?= set_value('especie', isset($pez) ? esc($pez['ESPECIE']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -398,7 +398,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-solid"
-																value="<?= isset($pez) ? esc($pez['FECHA_NACIMIENTO']) : '' ?>" required>
+																value="<?= set_value('fecha_nacimiento', isset($pez) ? esc($pez['FECHA_NACIMIENTO']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -408,7 +408,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="number" step="any" name="peso" id="peso" class="form-control form-control-solid"
-																value="<?= isset($pez) ? esc($pez['PESO']) : '' ?>" required>
+																value="<?= set_value('peso', isset($pez) ? esc($pez['PESO']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -418,7 +418,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="number" step="any" name="longitud" id="longitud" class="form-control form-control-solid"
-																value="<?= isset($pez) ? esc($pez['LONGITUD']) : '' ?>" required>
+																value="<?= set_value('longitud', isset($pez) ? esc($pez['LONGITUD']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -429,17 +429,18 @@ License: For each use you must have a valid license purchased only from above li
 															<!--begin::Input-->
 															<select name="tipo_agua" id="tipo_agua" class="form-control form-control-solid" required>
 																<option value="" disabled selected>Seleccionar Tipo de Agua</option>
-																<option value="dulce" <?= isset($pez) && $pez['TIPO_AGUA'] == 'dulce' ? 'selected' : '' ?>>Dulce</option>
-																<option value="salada" <?= isset($pez) && $pez['TIPO_AGUA'] == 'salada' ? 'selected' : '' ?>>Salada</option>
-																<option value="neutra" <?= isset($pez) && $pez['TIPO_AGUA'] == 'neutra' ? 'selected' : '' ?>>Neutra</option>
-																<option value="mixta" <?= isset($pez) && $pez['TIPO_AGUA'] == 'mixta' ? 'selected' : '' ?>>Mixta</option>
+																<option value="dulce" <?= set_select('tipo_agua', 'dulce', set_value('tipo_agua') == 'dulce' || (isset($pez) && $pez['TIPO_AGUA'] == 'dulce')) ?>>Dulce</option>
+																<option value="salada" <?= set_select('tipo_agua', 'salada', set_value('tipo_agua') == 'salada' || (isset($pez) && $pez['TIPO_AGUA'] == 'salada')) ?>>Salada</option>
+																<option value="neutra" <?= set_select('tipo_agua', 'neutra', set_value('tipo_agua') == 'neutra' || (isset($pez) && $pez['TIPO_AGUA'] == 'neutra')) ?>>Neutra</option>
+																<option value="mixta" <?= set_select('tipo_agua', 'mixta', set_value('tipo_agua') == 'mixta' || (isset($pez) && $pez['TIPO_AGUA'] == 'mixta')) ?>>Mixta</option>
 															</select>
 															<!--end::Input-->
 														</div>
 
-														<button type="submit" class="btn btn-primary"><?= isset($pez) ? 'Actualizar' : 'Guardar' ?></button>
+														<button type="submit" class="btn btn-primary" id="saveButton"><?= isset($pez) ? 'Actualizar' : 'Guardar' ?></button>
 														<a href="<?= base_url('peces') ?>" class="btn btn-secondary">Cancelar</a>
 													</form>
+
 												</div>
 											</tbody>
 											<!--end::Table body-->
@@ -557,6 +558,20 @@ License: For each use you must have a valid license purchased only from above li
 	<script>
 
 	</script>
+	<script>
+		// Obtener el formulario y el botón de guardar
+		const form = document.querySelector('form');
+		const saveButton = document.getElementById('saveButton');
+
+		// Añadir un evento al formulario para cuando se envíe
+		form.addEventListener('submit', function() {
+			// Desactivar el botón cuando se envíe el formulario
+			saveButton.disabled = true;
+			// Cambiar el texto del botón
+			saveButton.innerText = 'Guardando...';
+		});
+	</script>
+
 
 
 </body>

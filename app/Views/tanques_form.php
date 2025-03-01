@@ -377,7 +377,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="capacidad" id="capacidad" class="form-control form-control-solid" 
-																value="<?= isset($tanque) ? esc($tanque['CAPACIDAD']) : '' ?>" required>
+																value="<?= set_value('capacidad', isset($tanque) ? esc($tanque['CAPACIDAD']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -387,7 +387,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="localizacion" id="localizacion" class="form-control form-control-solid" 
-																value="<?= isset($tanque) ? esc($tanque['LOCALIZACION']) : '' ?>" required>
+																value="<?= set_value('localizacion', isset($tanque) ? esc($tanque['LOCALIZACION']) : '') ?>" required>
 															<!--end::Input-->
 														</div>
 
@@ -398,10 +398,10 @@ License: For each use you must have a valid license purchased only from above li
 															<!--begin::Input-->
 															<select name="tipo_agua" id="tipo_agua" class="form-control form-control-solid" required>
 																<option value="" disabled selected>Seleccionar Tipo de Agua</option>
-																<option value="dulce" <?= isset($tanque) && $tanque['TIPO_AGUA'] == 'dulce' ? 'selected' : '' ?>>Dulce</option>
-																<option value="salada" <?= isset($tanque) && $tanque['TIPO_AGUA'] == 'salada' ? 'selected' : '' ?>>Salada</option>
-																<option value="neutra" <?= isset($tanque) && $tanque['TIPO_AGUA'] == 'neutra' ? 'selected' : '' ?>>Neutra</option>
-																<option value="mixta" <?= isset($tanque) && $tanque['TIPO_AGUA'] == 'mixta' ? 'selected' : '' ?>>Mixta</option>
+																<option value="dulce" <?= set_select('tipo_agua', 'dulce', isset($tanque) && $tanque['TIPO_AGUA'] == 'dulce') ?>>Dulce</option>
+																<option value="salada" <?= set_select('tipo_agua', 'salada', isset($tanque) && $tanque['TIPO_AGUA'] == 'salada') ?>>Salada</option>
+																<option value="neutra" <?= set_select('tipo_agua', 'neutra', isset($tanque) && $tanque['TIPO_AGUA'] == 'neutra') ?>>Neutra</option>
+																<option value="mixta" <?= set_select('tipo_agua', 'mixta', isset($tanque) && $tanque['TIPO_AGUA'] == 'mixta') ?>>Mixta</option>
 															</select>
 															<!--end::Input-->
 														</div>
@@ -409,6 +409,7 @@ License: For each use you must have a valid license purchased only from above li
 														<button type="submit" class="btn btn-primary"><?= isset($tanque) ? 'Actualizar' : 'Guardar' ?></button>
 														<a href="<?= base_url('tanques') ?>" class="btn btn-secondary">Cancelar</a>
 													</form>
+
 												</div>
 											</tbody>
 											<!--end::Table body-->

@@ -67,6 +67,8 @@ class UsuarioController extends BaseController
         helper(['form', 'url']);
         // Cargar datos del usuario si es edición
         $data['usuario'] = $id ? $usuarioModel->find($id) : null;
+        $data['rolUsuarioBusqueda'] = $data['usuario'] ? $data['usuario']['ID_ROL'] : '';//para que ponga el rol
+
 
 
         $db = \Config\Database::connect();
@@ -152,26 +154,28 @@ class UsuarioController extends BaseController
     // }
     public function baja($id)
     {
+        // Cargar el modelo de usuario
         $usuarioModel = new UsuarioModel();
-        $usuario = $usuarioModel->find($id); // Obtener el usuario actual
-    
+
+        // Obtener el usuario por el ID
+        $usuario = $usuarioModel->find($id);
+
         if (is_null($usuario['FECHA_BAJA'])) {
-            // Obtener la fecha actual
+            // Si no tiene fecha de baja, poner la fecha actual de baja
             $fechaBaja = date('Y-m-d');
-    
-            // Actualizar el campo FECHA_BAJA con la fecha actual
             $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-    
-            // Redirigir al listado con un mensaje de éxito
+
+            // Mensaje de éxito al dar de baja
             return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
         } else {
-            // Si FECHA_BAJA no es null, dar de alta (poner FECHA_BAJA a null)
+            // Si ya tiene fecha de baja, eliminarla (dar de alta)
             $usuarioModel->update($id, ['FECHA_BAJA' => null]);
-    
-            // Redirigir al listado con un mensaje de éxito
+
+            // Mensaje de éxito al dar de alta
             return redirect()->to('/usuarios')->with('success', 'Usuario dado de alta correctamente.');
         }
     }
+
     
 
 }

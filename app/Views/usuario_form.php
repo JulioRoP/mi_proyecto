@@ -331,11 +331,6 @@ License: For each use you must have a valid license purchased only from above li
 								<!--end::Page title-->
 								<!--begin::Actions-->
 								<div class="d-flex align-items-center py-1">
-									<!--begin::Wrapper-->
-
-									<!--end::Wrapper-->
-									<!--begin::Button-->
-									<!--end::Button-->
 								</div>
 								<!--end::Actions-->
 							</div>
@@ -352,9 +347,6 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="card-header border-0 pt-6">
 										<!--begin::Card title-->
 										<div class="card-title">
-											<!--begin::buscador quitado-->
-
-											<!--end::Search-->
 										</div>
 										<!--begin::Card title-->
 										<!--begin::Card toolbar-->
@@ -365,78 +357,77 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="card-body pt-0">
 										<!--begin::Table-->
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-    <tbody class="text-gray-600 fw-bold">
-        <div class="container mt-5">
-            <h1 class="text-center"><?= isset($usuario) ? 'Editar Usuario' : 'Crear Usuario' ?></h1>
+											<tbody class="text-gray-600 fw-bold">
+												<div class="container mt-5">
+													<h1 class="text-center"><?= isset($usuario) ? 'Editar Usuario' : 'Crear Usuario' ?></h1>
 
-            <!-- Mostrar errores de validación -->
-            <?php if (isset($validation)): ?>
-                <div class="alert alert-danger">
-                    <?= $validation->listErrors() ?>
-                </div>
-            <?php endif; ?>
+													<!-- Mostrar errores de validación -->
+													<?php if (isset($validation)): ?>
+														<div class="alert alert-danger">
+															<?= $validation->listErrors() ?>
+														</div>
+													<?php endif; ?>
 
-            <!-- Formulario -->
-            <form action="<?= isset($usuario) ? base_url('usuarios/save/' . $usuario['ID_USUARIO']) : base_url('usuarios/save') ?>" method="post">
-                <?= csrf_field(); ?>
+													<!-- Formulario -->
+													<form action="<?= isset($usuario) ? base_url('usuarios/save/' . $usuario['ID_USUARIO']) : base_url('usuarios/save') ?>" method="post">
+														<?= csrf_field(); ?>
 
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label for="nombre" class="fs-6 fw-bold mb-2">Nombre Del Usuario</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="text" name="nombre" id="nombre" class="form-control form-control-solid"
-                        value="<?= isset($usuario) ? esc($usuario['NOMBRE_USUARIO']) : '' ?>" required>
-                    <!--end::Input-->
-                </div>
+														<div class="fv-row mb-7">
+															<!--begin::Label-->
+															<label for="nombre" class="fs-6 fw-bold mb-2">Nombre Del Usuario</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" name="nombre" id="nombre" class="form-control form-control-solid"
+																value="<?= set_value('nombre', isset($usuario) ? esc($usuario['NOMBRE_USUARIO']) : '') ?>" required>
+															<!--end::Input-->
+														</div>
 
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label for="email" class="fs-6 fw-bold mb-2">Email</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="email" name="email" id="email" class="form-control form-control-solid"
-                        value="<?= isset($usuario) ? esc($usuario['EMAIL']) : '' ?>" required>
-                    <!--end::Input-->
-                </div>
+														<div class="fv-row mb-7">
+															<!--begin::Label-->
+															<label for="email" class="fs-6 fw-bold mb-2">Email</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="email" name="email" id="email" class="form-control form-control-solid"
+																value="<?= set_value('email', isset($usuario) ? esc($usuario['EMAIL']) : '') ?>" required>
+															<!--end::Input-->
+														</div>
 
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label for="contraseña" class="fs-6 fw-bold mb-2">Contraseña</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="text" step="any" name="contraseña" id="contraseña" class="form-control form-control-solid"
-                        value="<?= isset($usuario) ? esc($usuario['CONTRASEÑA_HASH']) : '' ?>" required>
-                    <!--end::Input-->
-                </div>
+														<div class="fv-row mb-7">
+															<!--begin::Label-->
+															<label for="contraseña" class="fs-6 fw-bold mb-2">Contraseña</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" step="any" name="contraseña" id="contraseña" class="form-control form-control-solid"
+																value="<?= set_value('contraseña', isset($usuario) ? esc($usuario['CONTRASEÑA_HASH']) : '') ?>" required>
+															<!--end::Input-->
+														</div>
 
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label for="fecha_registro" class="fs-6 fw-bold mb-2">Fecha de Registro</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="date" step="any" name="fecha_registro" id="fecha_registro" class="form-control form-control-solid"
-                        value="<?= isset($usuario) ? esc($usuario['FECHA_REGISTRO']) : '' ?>" required>
-                    <!--end::Input-->
-                </div>
+														<div class="fv-row mb-7">
+															<!--begin::Label-->
+															<label for="fecha_registro" class="fs-6 fw-bold mb-2">Fecha de Registro</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="date" step="any" name="fecha_registro" id="fecha_registro" class="form-control form-control-solid"
+																value="<?= set_value('fecha_registro', isset($usuario) ? esc($usuario['FECHA_REGISTRO']) : '') ?>" required>
+															<!--end::Input-->
+														</div>
 
-                <!-- Select para Rol -->
-<div class="mb-3">
-    <select name="rol" class="form-control">  <!-- Cambié 'ROL' a 'rol' -->
-        <option value="" disabled selected>Selecciona el Rol</option>
-        <option value="1" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '1' ? 'selected' : '' ?>>Administrador</option>
-        <option value="2" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '2' ? 'selected' : '' ?>>Visitante</option>
-        <!-- Puedes añadir más opciones si tienes otros roles -->
-    </select>
-</div>
+														<!-- Select para Rol -->
+														<div class="mb-3">
+															<select name="rol" class="form-control">
+																<option value="" disabled>Selecciona el Rol</option>
+																<option value="1" <?= set_select('rol', '1', isset($usuario) && $usuario['ROL'] == 1) ?>>Administrador</option>
+																<option value="2" <?= set_select('rol', '2', isset($usuario) && $usuario['ROL'] == 2) ?>>Visitante</option>
+															</select>
+														</div>
 
+														<button type="submit" class="btn btn-primary"><?= isset($usuario) ? 'Actualizar' : 'Guardar' ?></button>
+														<a href="<?= base_url('usuarios') ?>" class="btn btn-secondary">Cancelar</a>
+													</form>
 
-                <button type="submit" class="btn btn-primary"><?= isset($usuario) ? 'Actualizar' : 'Guardar' ?></button>
-                <a href="<?= base_url('usuarios') ?>" class="btn btn-secondary">Cancelar</a>
-            </form>
-        </div>
-    </tbody>
-</table>
+												</div>
+											</tbody>
+										</table>
 
 
 										<!--end::Table-->

@@ -485,7 +485,6 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 											<!--begin::Table head-->
 											<thead>
-												<!--begin::Table row-->
 												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
 													<th class="min-w-125px">Nombre</th>
 													<th class="min-w-125px">Email</th>
@@ -494,10 +493,7 @@ License: For each use you must have a valid license purchased only from above li
 													<th class="min-w-125px">Rol</th>
 													<th class="text-end min-w-100px">Acciones</th>
 												</tr>
-												<!--end::Table row-->
 											</thead>
-											<!--end::Table head-->
-											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
 												<h1 class="text-center">Listado de Usuarios</h1><br><br>
 
@@ -506,15 +502,16 @@ License: For each use you must have a valid license purchased only from above li
 														toastr.success('<?= session()->getFlashdata('success'); ?>');
 													</script>
 												<?php endif; ?>
+
 												<?php if (!empty($usuarios) && is_array($usuarios)): ?>
-													
 													<?php foreach ($usuarios as $usuario): ?>
 														<tr>
 															<td>
-														<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
-														<span class="<?= !is_null($usuario['FECHA_BAJA']) ? 'text-danger' : '' ?>">
-																<?= esc($usuario['NOMBRE_USUARIO']) ?>
-															</span>															</td>
+																<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
+																<span class="<?= !is_null($usuario['FECHA_BAJA']) ? 'text-danger' : '' ?>">
+																	<?= esc($usuario['NOMBRE_USUARIO']) ?>
+																</span>
+															</td>
 															<td><?= esc($usuario['EMAIL']) ?></td>
 															<td><?= substr($usuario['CONTRASEÑA_HASH'], 0, 10) . '...'; ?></td>
 															<td><?= esc($usuario['FECHA_REGISTRO']) ?></td>
@@ -532,7 +529,9 @@ License: For each use you must have a valid license purchased only from above li
 																		<a href="<?= base_url('usuarios/save/' . $usuario['ID_USUARIO']) ?>" class="menu-link px-3">Editar</a>
 																	</div>
 																	<div class="menu-item px-3">
-																		<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de dar de baja este usuario?');">Dar de baja</a>
+																		<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
+																			<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																		</a>
 																	</div>
 																</div>
 															</td>
@@ -544,11 +543,8 @@ License: For each use you must have a valid license purchased only from above li
 													</tr>
 												<?php endif; ?>
 											</tbody>
-
-
-
-											<!--end::Table body-->
 										</table>
+
 										<!--end::Table-->
 
 										<!-- -----------Paginación------------ -->
