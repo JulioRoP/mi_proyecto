@@ -52,6 +52,14 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+	<style>
+		/* Estilo para los asteriscos rojos */
+	.asterisco-rojo {
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -373,7 +381,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="capacidad" class="fs-6 fw-bold mb-2">Capacidad</label>
+															<label for="capacidad" class="fs-6 fw-bold mb-2">Capacidad<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="capacidad" id="capacidad" class="form-control form-control-solid" 
@@ -383,7 +391,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="localizacion" class="fs-6 fw-bold mb-2">Localización</label>
+															<label for="localizacion" class="fs-6 fw-bold mb-2">Localización<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="localizacion" id="localizacion" class="form-control form-control-solid" 
@@ -393,11 +401,11 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="tipo_agua" class="fs-6 fw-bold mb-2">Tipo de Agua</label>
+															<label for="tipo_agua" class="fs-6 fw-bold mb-2">Tipo de Agua<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<select name="tipo_agua" id="tipo_agua" class="form-control form-control-solid" required>
-																<option value="" disabled selected>Seleccionar Tipo de Agua</option>
+																<option value="" disabled selected>Seleccionar Tipo de Agua<span class="asterisco-rojo"> *</span></option>
 																<option value="dulce" <?= set_select('tipo_agua', 'dulce', isset($tanque) && $tanque['TIPO_AGUA'] == 'dulce') ?>>Dulce</option>
 																<option value="salada" <?= set_select('tipo_agua', 'salada', isset($tanque) && $tanque['TIPO_AGUA'] == 'salada') ?>>Salada</option>
 																<option value="neutra" <?= set_select('tipo_agua', 'neutra', isset($tanque) && $tanque['TIPO_AGUA'] == 'neutra') ?>>Neutra</option>

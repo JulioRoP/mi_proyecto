@@ -20,6 +20,8 @@ $routes->post('usuarios/save', 'UsuarioController::saveUsuario'); // Guardar nue
 $routes->post('usuarios/save/(:num)', 'UsuarioController::saveUsuario/$1'); // Actualizar usuario (POST)
 $routes->get('usuarios/delete/(:num)', 'UsuarioController::delete/$1'); // Eliminar usuario
 $routes->get('usuarios/baja/(:num)', 'UsuarioController::baja/$1'); // Dar de baja usuario
+$routes->get('usuarios/exportarCSV', 'UsuarioController::exportarCSV');//exportar usuario
+
 
 // ----------------- Rutas de Peces ---------------------
 
@@ -36,6 +38,10 @@ $routes->post('peces/save/(:num)', 'PecesController::savePeces/$1'); // Actualiz
 
 // Dar de baja pez
 $routes->get('peces/baja/(:num)', 'PecesController::baja/$1'); // Dar de baja pez (actualiza la fecha de baja)
+
+//exportar peces
+// Si tienes un prefijo 'public' en la URL, puedes configurarlo de la siguiente manera
+$routes->get('peces/exportarCSV', 'PecesController::exportarCSV');
 
 
 
@@ -59,6 +65,8 @@ $routes->post('tanques/save/(:num)', 'TanquesController::saveTanques/$1');
 // Dar de baja tanque
 $routes->get('tanques/baja/(:num)', 'TanquesController::baja/$1'); // Dar de baja tanque (actualiza la fecha de baja)
 
+//exportar tank
+$routes->get('tanques/exportarCSV', 'TanquesController::exportarCSV');
 
 
 
@@ -77,6 +85,9 @@ $routes->post('proveedores/save/(:num)', 'ProveedoresController::saveProveedores
 
 // Dar de baja proveedor
 $routes->get('proveedores/baja/(:num)', 'ProveedoresController::baja/$1');
+
+//exportar los proveedores
+$routes->get('proveedores/exportar', 'ProveedoresController::exportarProveedores');
 
 
 

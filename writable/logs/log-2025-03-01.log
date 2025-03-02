@@ -330,3 +330,278 @@ DEBUG - 2025-03-01 23:05:19 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-03-01 23:11:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-03-01 23:11:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-03-01 23:11:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:25:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:25:28 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 176.
+ 1 APPPATH\Controllers\PecesController.php(176): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 176)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:25:29 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 176.
+ 1 APPPATH\Controllers\PecesController.php(176): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 176)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:25:34 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 176.
+ 1 APPPATH\Controllers\PecesController.php(176): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 176)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:26:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:27:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:27:53 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:27:54 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:27:59 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:28:06 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:28:12 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:28:18 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:28:55 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:28:56 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 172.
+ 1 APPPATH\Controllers\PecesController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:29:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:30:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:30:52 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:30:53 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:30:58 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:32:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:32:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:33:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:33:26 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:33:27 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:33:32 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:34:33 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:34:34 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:35:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:35:39 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:35:40 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:35:45 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:42:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-01 23:42:09 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:42:11 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-01 23:42:16 --> ErrorException: Undefined array key "FECHA_REGISTRO"
+[Method: GET, Route: peces/exportarCSV]
+in APPPATH\Controllers\PecesController.php on line 178.
+ 1 APPPATH\Controllers\PecesController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FECHA_REGISTRO"', 'C:\\xampp\\htdocs\\mi_proyecto\\app\\Controllers\\PecesController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PecesController->exportarCSV()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PecesController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-01 23:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:44:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:44:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:45:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:46:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:51:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:56:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-01 23:56:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

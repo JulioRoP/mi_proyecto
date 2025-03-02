@@ -124,19 +124,7 @@ class PecesController extends BaseController
         return view('peces_form', $data);
     }
 
-    // public function baja($id)
-    // {
-    //     $pecesModel = new PecesModel();
 
-    //     // Obtener la fecha actual
-    //     $fechaBaja = date('Y-m-d');
-
-    //     // Actualizar el campo FECHA_BAJA con la fecha actual
-    //     $pecesModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-
-    //     // Redirigir al listado con un mensaje de éxito
-    //     return redirect()->to('/peces')->with('success', 'Pez dado de baja correctamente.');
-    // }  
     public function baja($id)
     {
         $pecesModel = new PecesModel();
@@ -160,4 +148,47 @@ class PecesController extends BaseController
         }
     }
     
+    public function exportarCSV()
+    {
+        $pecesModel = new PecesModel();
+
+        // Filtrar los peces activos (si no hay filtros activos, exporta todos los peces)
+        $data['peces'] = $pecesModel->where('FECHA_BAJA', NULL)->findAll();
+
+        // Definir el nombre del archivo CSV
+        $filename = 'peces_' . date('Y-m-d_H-i-s') . '.csv';
+
+        // Abrir el archivo en modo escritura
+        $file = fopen('php://output', 'w');
+
+        // Establecer el encabezado de las columnas
+        $header = ['ESPECIE', 'FECHA_NACIMIENTO', 'PESO', 'LONGITUD', 'TIPO_AGUA', 'FECHA_BAJA'];
+        fputcsv($file, $header);
+
+        // Escribir los datos de cada pez
+        foreach ($data['peces'] as $pez) {
+            fputcsv($file, [
+                $pez['ESPECIE'],
+                $pez['FECHA_NACIMIENTO'],
+                $pez['PESO'],
+                $pez['LONGITUD'],
+                $pez['TIPO_AGUA'],
+                $pez['FECHA_BAJA']
+            ]);
+        }
+
+        // Cerrar el archivo
+        fclose($file);
+
+        // Establecer las cabeceras HTTP para forzar la descarga del archivo CSV
+        return $this->response->setHeader('Content-Type', 'application/csv')
+                            ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+                            ->setHeader('Pragma', 'no-cache')
+                            ->setHeader('Expires', '0');
+    }
+
+    
+
+
+
 }

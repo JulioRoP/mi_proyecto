@@ -52,6 +52,14 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+	<style>
+		/* Estilo para los asteriscos rojos */
+	.asterisco-rojo {
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -382,7 +390,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="nombre_proveedor" class="fs-6 fw-bold mb-2">Nombre del Proveedor</label>
+															<label for="nombre_proveedor" class="fs-6 fw-bold mb-2">Nombre del Proveedor<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="nombre_proveedor" id="nombre_proveedor" class="form-control form-control-solid"
@@ -392,7 +400,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="tipo_producto" class="fs-6 fw-bold mb-2">Tipo de Producto</label>
+															<label for="tipo_producto" class="fs-6 fw-bold mb-2">Tipo de Producto<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="tipo_producto" id="tipo_producto" class="form-control form-control-solid"
@@ -402,7 +410,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="telefono" class="fs-6 fw-bold mb-2">Teléfono</label>
+															<label for="telefono" class="fs-6 fw-bold mb-2">Teléfono<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" step="any" name="telefono" id="telefono" class="form-control form-control-solid"
@@ -412,7 +420,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="email" class="fs-6 fw-bold mb-2">Email</label>
+															<label for="email" class="fs-6 fw-bold mb-2">Email<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="email" step="any" name="email" id="email" class="form-control form-control-solid"

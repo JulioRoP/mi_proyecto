@@ -52,6 +52,14 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+	<style>
+		/* Estilo para los asteriscos rojos */
+	.asterisco-rojo {
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -374,7 +382,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="nombre" class="fs-6 fw-bold mb-2">Nombre Del Usuario</label>
+															<label for="nombre" class="fs-6 fw-bold mb-2">Nombre Del Usuario<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" name="nombre" id="nombre" class="form-control form-control-solid"
@@ -384,7 +392,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="email" class="fs-6 fw-bold mb-2">Email</label>
+															<label for="email" class="fs-6 fw-bold mb-2">Email<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="email" name="email" id="email" class="form-control form-control-solid"
@@ -394,7 +402,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="contraseña" class="fs-6 fw-bold mb-2">Contraseña</label>
+															<label for="contraseña" class="fs-6 fw-bold mb-2">Contraseña<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="text" step="any" name="contraseña" id="contraseña" class="form-control form-control-solid"
@@ -404,7 +412,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<div class="fv-row mb-7">
 															<!--begin::Label-->
-															<label for="fecha_registro" class="fs-6 fw-bold mb-2">Fecha de Registro</label>
+															<label for="fecha_registro" class="fs-6 fw-bold mb-2">Fecha de Registro<span class="asterisco-rojo"> *</span></label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input type="date" step="any" name="fecha_registro" id="fecha_registro" class="form-control form-control-solid"
@@ -414,6 +422,7 @@ License: For each use you must have a valid license purchased only from above li
 
 														<!-- Select para Rol -->
 														<div class="mb-3">
+														<label for="Rol" class="fs-6 fw-bold mb-2"> Rol<span class="asterisco-rojo"> *</span></label>
 															<select name="rol" class="form-control">
 																<option value="" disabled>Selecciona el Rol</option>
 																<option value="1" <?= set_select('rol', '1', isset($usuario) && $usuario['ROL'] == 1) ?>>Administrador</option>

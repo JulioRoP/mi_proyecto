@@ -136,6 +136,42 @@ class TanquesController extends BaseController
             return redirect()->to('/tanques')->with('success', 'Tanque dado de alta correctamente.');
         }
     }
+    public function exportarCSV()
+    {
+        $tanquesModel = new TanquesModel();
+
+        // Filtrar los tanques activos (si no hay filtros activos, exporta todos los tanques)
+        $data['tanques'] = $tanquesModel->where('FECHA_BAJA', NULL)->findAll();
+
+        // Definir el nombre del archivo CSV
+        $filename = 'tanques_' . date('Y-m-d_H-i-s') . '.csv';
+
+        // Abrir el archivo en modo escritura
+        $file = fopen('php://output', 'w');
+
+        // Establecer el encabezado de las columnas
+        $header = ['CAPACIDAD', 'LOCALIZACION', 'TIPO_AGUA', 'FECHA_BAJA'];
+        fputcsv($file, $header);
+
+        // Escribir los datos de cada tanque
+        foreach ($data['tanques'] as $tanque) {
+            fputcsv($file, [
+                $tanque['CAPACIDAD'],
+                $tanque['LOCALIZACION'],
+                $tanque['TIPO_AGUA'],
+                $tanque['FECHA_BAJA']
+            ]);
+        }
+
+        // Cerrar el archivo
+        fclose($file);
+
+        // Establecer las cabeceras HTTP para forzar la descarga del archivo CSV
+        return $this->response->setHeader('Content-Type', 'application/csv')
+                                ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+                                ->setHeader('Pragma', 'no-cache')
+                                ->setHeader('Expires', '0');
+    }
 
 }
 

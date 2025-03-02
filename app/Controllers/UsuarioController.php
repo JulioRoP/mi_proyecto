@@ -139,19 +139,6 @@ class UsuarioController extends BaseController
         return view('usuario_form', $data);
     }
 
-    // public function baja($id)
-    // {
-    //     $usuarioModel = new UsuarioModel();
-        
-    //     // Obtener la fecha actual
-    //     $fechaBaja = date('Y-m-d');
-
-    //     // Actualizar el campo FECHA_BAJA con la fecha actual
-    //     $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
-
-    //     // Redirigir al listado con un mensaje de éxito
-    //     return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
-    // }
     public function baja($id)
     {
         // Cargar el modelo de usuario
@@ -176,6 +163,66 @@ class UsuarioController extends BaseController
         }
     }
 
-    
+    public function exportarCSV()
+    {
+        $usuarioModel = new UsuarioModel();
+
+        // Si deseas aplicar filtros antes de exportar (puedes adaptarlo según lo necesites)
+        $estadoBusqueda = $this->request->getVar('estado');
+        
+        // Realizar la unión con la tabla ROLES para obtener el NOMBRE_ROL
+        if ($estadoBusqueda == 'activo') {
+            // Filtrar usuarios activos
+            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
+                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
+                                            ->where('FECHA_BAJA', NULL)
+                                            ->findAll();
+        } elseif ($estadoBusqueda == 'baja') {
+            // Filtrar usuarios dados de baja
+            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
+                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
+                                            ->where('FECHA_BAJA IS NOT NULL')
+                                            ->findAll();
+        } else {
+            // Sin filtro, obtener todos los usuarios
+            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
+                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
+                                            ->findAll();
+        }
+
+        // Definir el nombre del archivo CSV
+        $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
+
+        // Abrir el archivo en modo escritura
+        $file = fopen('php://output', 'w');
+
+        // Establecer el encabezado de las columnas para el CSV
+        $header = ['ID_USUARIO', 'NOMBRE_USUARIO', 'EMAIL', 'ROL', 'FECHA_REGISTRO', 'FECHA_BAJA'];
+        fputcsv($file, $header);
+
+        // Escribir los datos de cada usuario
+        foreach ($data['usuarios'] as $usuario) {
+            fputcsv($file, [
+                $usuario['ID_USUARIO'],
+                $usuario['NOMBRE_USUARIO'],
+                $usuario['EMAIL'],
+                $usuario['NOMBRE_ROL'],  // Aquí ahora se toma el nombre del rol de la tabla ROLES
+                $usuario['FECHA_REGISTRO'],
+                $usuario['FECHA_BAJA']
+            ]);
+        }
+
+        // Cerrar el archivo
+        fclose($file);
+
+        // Establecer las cabeceras HTTP para forzar la descarga del archivo CSV
+        return $this->response->setHeader('Content-Type', 'application/csv')
+                                ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+                                ->setHeader('Pragma', 'no-cache')
+                                ->setHeader('Expires', '0');
+    }
+
+
+
 
 }

@@ -140,4 +140,34 @@ class ProveedoresController extends BaseController
         }
     }
     
+    public function exportarProveedores()
+    {
+        $proveedoresModel = new ProveedoresModel();
+        $proveedores = $proveedoresModel->findAll(); // Obtener todos los proveedores
+
+        // Definir el encabezado para la descarga del archivo CSV
+        $filename = 'proveedores_' . date('Y-m-d_H-i-s') . '.csv';
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        $output = fopen('php://output', 'w');
+
+        // Escribir los encabezados del archivo CSV
+        fputcsv($output, ['ID_PROVEEDOR', 'NOMBRE_PROVEEDOR', 'TIPO_PRODUCTO', 'TELEFONO', 'EMAIL', 'FECHA_BAJA']);
+
+        // Escribir los datos de los proveedores
+        foreach ($proveedores as $proveedor) {
+            fputcsv($output, [
+                $proveedor['ID_PROVEEDOR'],
+                $proveedor['NOMBRE_PROVEEDOR'],
+                $proveedor['TIPO_PRODUCTO'],
+                $proveedor['TELEFONO'],
+                $proveedor['EMAIL'],
+                $proveedor['FECHA_BAJA'],
+            ]);
+        }
+
+        fclose($output);
+        exit();
+    }
+
 }
