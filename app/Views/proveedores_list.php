@@ -443,15 +443,21 @@ License: For each use you must have a valid license purchased only from above li
 
 												<!--end::Export-->
 												<!--begin::Add user-->
-												<a href="<?= base_url('proveedores/save') ?>"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-														<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-														<span class="svg-icon svg-icon-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-																<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->Añadir Proveedor</button></a>
+												<?php if ($roleName === 'Administrador'): ?>
+													<a href="<?= base_url('proveedores/save') ?>">
+														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+															<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+															<span class="svg-icon svg-icon-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+																	<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+																</svg>
+															</span>
+															<!--end::Svg Icon-->Añadir Proveedor
+														</button>
+													</a>
+												<?php endif; ?>
+
 
 												<!--end::Add user-->
 											</div>
@@ -478,20 +484,31 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="card-body pt-0">
 										<!--begin::Table-->
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-											<!--begin::Table head-->
 											<thead>
-												<!--begin::Table row-->
 												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-													<th class="min-w-125px">Proveedor</th>
-													<th class="min-w-125px">Productos</th>
-													<th class="min-w-125px">Teléfono</th>
-													<th class="min-w-125px">Email</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'NOMBRE_PROVEEDOR', 'direccion' => ($ordenarPor == 'NOMBRE_PROVEEDOR' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Proveedor <?= ($ordenarPor == 'NOMBRE_PROVEEDOR') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'TIPO_PRODUCTO', 'direccion' => ($ordenarPor == 'TIPO_PRODUCTO' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Productos <?= ($ordenarPor == 'TIPO_PRODUCTO') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'TELEFONO', 'direccion' => ($ordenarPor == 'TELEFONO' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Teléfono <?= ($ordenarPor == 'TELEFONO') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'EMAIL', 'direccion' => ($ordenarPor == 'EMAIL' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Email <?= ($ordenarPor == 'EMAIL') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
 													<th class="text-end min-w-100px">Acciones</th>
 												</tr>
-												<!--end::Table row-->
 											</thead>
-											<!--end::Table head-->
-											<!--begin::Table body-->
 											<tbody class="text-gray-600 fw-bold">
 												<h1 class="text-center">Listado de Proveedores</h1><br><br>
 
@@ -500,48 +517,35 @@ License: For each use you must have a valid license purchased only from above li
 														toastr.success('<?= session()->getFlashdata('success'); ?>');
 													</script>
 												<?php endif; ?>
+
 												<?php if (!empty($proveedores) && is_array($proveedores)): ?>
 													<?php foreach ($proveedores as $proveedor): ?>
 														<tr>
-														<td>
-															<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
-															<span class="<?= !is_null($proveedor['FECHA_BAJA']) ? 'text-danger' : '' ?>">
-																<?= esc($proveedor['NOMBRE_PROVEEDOR']) ?>
-															</span>
-														</td>
-															<!-- <td><?= esc($proveedor['NOMBRE_PROVEEDOR']) ?></td> -->
+															<td>
+																<span class="<?= !is_null($proveedor['FECHA_BAJA']) ? 'text-danger' : '' ?>">
+																	<?= esc($proveedor['NOMBRE_PROVEEDOR']) ?>
+																</span>
+															</td>
 															<td><?= esc($proveedor['TIPO_PRODUCTO']) ?></td>
 															<td><?= esc($proveedor['TELEFONO']) ?></td>
 															<td><?= esc($proveedor['EMAIL']) ?></td>
 															<td class="text-end">
-																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Modificar
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
-																	<!--end::Svg Icon-->
-																</a>
-																<!--begin::Menu-->
-																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('proveedores/save/' . $proveedor['ID_PROVEEDOR']) ?>" class="menu-link px-3">Editar</a>
+																<?php if ($roleName === 'Administrador'): ?>
+																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+																		Modificar
+																	</a>
+																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('proveedores/save/' . $proveedor['ID_PROVEEDOR']) ?>" class="menu-link px-3">Editar</a>
+																		</div>
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('proveedores/baja/' . esc($proveedor['ID_PROVEEDOR'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($proveedor['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este proveedor?');">
+																				<?= is_null($proveedor['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																			</a>
+																		</div>
 																	</div>
-																	<!--end::Menu item-->
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('proveedores/baja/' . esc($proveedor['ID_PROVEEDOR'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($proveedor['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este proveedor?');">
-																			<?= is_null($proveedor['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
-																		</a>
-																	</div>
-
-																	<!--end::Menu item-->
-																</div>
-																<!--end::Menu-->
+																<?php endif; ?>
 															</td>
-
 														</tr>
 													<?php endforeach; ?>
 												<?php else: ?>
@@ -550,8 +554,8 @@ License: For each use you must have a valid license purchased only from above li
 													</tr>
 												<?php endif; ?>
 											</tbody>
-											<!--end::Table body-->
 										</table>
+
 										<!--end::Table-->
 
 										<!-- -----------Paginación------------ -->

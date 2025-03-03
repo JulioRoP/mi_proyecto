@@ -425,8 +425,8 @@ License: For each use you must have a valid license purchased only from above li
 														<label for="Rol" class="fs-6 fw-bold mb-2"> Rol<span class="asterisco-rojo"> *</span></label>
 															<select name="rol" class="form-control">
 																<option value="" disabled>Selecciona el Rol</option>
-																<option value="1" <?= set_select('rol', '1', isset($usuario) && $usuario['ROL'] == 1) ?>>Administrador</option>
-																<option value="2" <?= set_select('rol', '2', isset($usuario) && $usuario['ROL'] == 2) ?>>Visitante</option>
+																<option value="1" <?= set_select('rol', '1', isset($usuario) && $usuario['ID_ROL'] == 1) ?>>Administrador</option>
+																<option value="2" <?= set_select('rol', '2', isset($usuario) && $usuario['ID_ROL'] == 2) ?>>Visitante</option>
 															</select>
 														</div>
 

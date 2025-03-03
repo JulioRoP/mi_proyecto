@@ -428,7 +428,7 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Input-->
 														</div>
 
-														<button type="submit" class="btn btn-primary"><?= isset($proveedor) ? 'Actualizar' : 'Guardar' ?></button>
+														<button type="submit" class="btn btn-primary" id="saveButton"><?= isset($proveedor) ? 'Actualizar' : 'Guardar' ?></button>
 														<a href="<?= base_url('proveedores') ?>" class="btn btn-secondary">Cancelar</a>
 													</form>
 
@@ -547,7 +547,17 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- libreria para los rgaficos -->
 	<script>
+		// Obtener el formulario y el botón de guardar
+		const form = document.querySelector('form');
+		const saveButton = document.getElementById('saveButton');
 
+		// Añadir un evento al formulario para cuando se envíe
+		form.addEventListener('submit', function() {
+			// Desactivar el botón cuando se envíe el formulario
+			saveButton.disabled = true;
+			// Cambiar el texto del botón
+			saveButton.innerText = 'Guardando...';
+		});
 	</script>
 
 

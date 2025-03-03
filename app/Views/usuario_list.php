@@ -449,15 +449,20 @@ License: For each use you must have a valid license purchased only from above li
 												</a>
 												<!--end::Export-->
 												<!--begin::Add user-->
-												<a href="<?= base_url('usuarios/save') ?>"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-														<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-														<span class="svg-icon svg-icon-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-																<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->Añadir Usuario</button></a>
+												<?php if ($roleName === 'Administrador'): ?>
+													<a href="<?= base_url('usuarios/save') ?>">
+														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+															<span class="svg-icon svg-icon-2">
+																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																	<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+																	<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+																</svg>
+															</span>
+															Añadir Usuario
+														</button>
+													</a>
+												<?php endif; ?>
+
 
 												<!--end::Add user-->
 											</div>
@@ -487,11 +492,11 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Table head-->
 											<thead>
 												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-													<th class="min-w-125px">Nombre</th>
-													<th class="min-w-125px">Email</th>
-													<th class="min-w-125px">Contraseña</th>
-													<th class="min-w-125px">Fecha registro</th>
-													<th class="min-w-125px">Rol</th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_USUARIO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Nombre</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'EMAIL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Email</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'CONTRASEÑA_HASH', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Contraseña</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_REGISTRO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Fecha Registro</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_ROL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Rol</a></th>
 													<th class="text-end min-w-100px">Acciones</th>
 												</tr>
 											</thead>
@@ -518,23 +523,26 @@ License: For each use you must have a valid license purchased only from above li
 															<td><?= esc($usuario['FECHA_REGISTRO']) ?></td>
 															<td><?= isset($usuario['NOMBRE_ROL']) ? esc($usuario['NOMBRE_ROL']) : 'Sin Rol' ?></td>
 															<td class="text-end">
-																<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Modificar
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
-																</a>
-																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('usuarios/save/' . $usuario['ID_USUARIO']) ?>" class="menu-link px-3">Editar</a>
+																<?php if ($roleName === 'Administrador'): ?>
+																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+																		Modificar
+																		<span class="svg-icon svg-icon-5 m-0">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																			</svg>
+																		</span>
+																	</a>
+																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('usuarios/save/' . $usuario['ID_USUARIO']) ?>" class="menu-link px-3">Editar</a>
+																		</div>
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
+																				<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																			</a>
+																		</div>
 																	</div>
-																	<div class="menu-item px-3">
-																		<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
-																			<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
-																		</a>
-																	</div>
-																</div>
+																<?php endif; ?>
 															</td>
 														</tr>
 													<?php endforeach; ?>

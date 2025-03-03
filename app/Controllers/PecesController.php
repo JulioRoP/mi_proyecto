@@ -9,65 +9,63 @@ class PecesController extends BaseController
     public function index()
     {
         $pecesModel = new PecesModel();
-        $data['peces'] = $pecesModel->where('FECHA_BAJA', NULL)->findAll(); // Solo peces activos
 
-        // ------------buscador-------------
-        $especieBusqueda = $this->request->getVar('ESPECIE');  // Obtener el término de búsqueda desde el formulario
+        // Obtener filtros
+        $especieBusqueda = $this->request->getVar('ESPECIE');
         $fechaNacimientoBusqueda = $this->request->getVar('FECHA_NACIMIENTO');
         $pesoBusqueda = $this->request->getVar('PESO');
         $longitudBusqueda = $this->request->getVar('LONGITUD');
         $estadoBusqueda = $this->request->getVar('estado');
-        $tipoAguaBusqueda = $this->request->getVar('TIPO_AGUA');  // Nueva variable para tipo de agua
-
-        // Aplicar los filtros si es necesario
+        $tipoAguaBusqueda = $this->request->getVar('TIPO_AGUA');
+        
+        // Obtener ordenación
+        $sort = $this->request->getVar('sort') ?? 'ID_PEZ';
+        $order = $this->request->getVar('order') ?? 'asc';
+        $newOrder = ($order === 'asc') ? 'desc' : 'asc';
+        
+        // Aplicar filtros
         if ($estadoBusqueda == 'activo') {
-            $pecesModel->where('FECHA_BAJA IS NULL');  // Solo activos
+            $pecesModel->where('FECHA_BAJA IS NULL');
         } elseif ($estadoBusqueda == 'baja') {
-            $pecesModel->where('FECHA_BAJA IS NOT NULL');  // Solo dados de baja
-        } elseif ($estadoBusqueda == 'todos') {
-            // No aplicamos ningún filtro de FECHA_BAJA, mostramos todos
+            $pecesModel->where('FECHA_BAJA IS NOT NULL');
         }
-
-        // Aplicar filtro si se introduce especie
-        if($especieBusqueda) {
+        
+        if ($especieBusqueda) {
             $pecesModel->like('ESPECIE', $especieBusqueda);
         }
-
         if ($fechaNacimientoBusqueda) {
             $pecesModel->like('FECHA_NACIMIENTO', $fechaNacimientoBusqueda);
         }
-
         if ($pesoBusqueda) {
             $pecesModel->like('PESO', $pesoBusqueda);
         }
-
         if ($longitudBusqueda) {
             $pecesModel->like('LONGITUD', $longitudBusqueda);
         }
-
-        // Aplicar filtro para tipo de agua (nuevo campo)
         if ($tipoAguaBusqueda) {
             $pecesModel->like('TIPO_AGUA', $tipoAguaBusqueda);
         }
+        
+        // Aplicar ordenación
+        $pecesModel->orderBy($sort, $order);
 
-        // Agregar más filtros si es necesario
-
+        // Paginación
+        $perPage = 4;
+        $page = $this->request->getVar('page') ?: 1;
+        $data['peces'] = $pecesModel->paginate($perPage, 'default', $page);
+        $data['pager'] = $pecesModel->pager;
+        
+        // Pasar datos a la vista
         $data['especieBusqueda'] = $especieBusqueda;
         $data['fechaNacimientoBusqueda'] = $fechaNacimientoBusqueda;
         $data['pesoBusqueda'] = $pesoBusqueda;
         $data['longitudBusqueda'] = $longitudBusqueda;
         $data['estadoBusqueda'] = $estadoBusqueda;
-        $data['tipoAguaBusqueda'] = $tipoAguaBusqueda;  // Pasar el valor de búsqueda de tipo de agua
-
-        // ------------buscador-------------
-
-        // --------paginación-------------
-        $perPage = 4; // Número de elementos por página
-        $page = $this->request->getVar('page') ?: 1;  // Obtener la página actual
-        $data['peces'] = $pecesModel->paginate($perPage, 'default', $page);
-        $data['pager'] = $pecesModel->pager;
-        // --------paginación-------------
-
+        $data['tipoAguaBusqueda'] = $tipoAguaBusqueda;
+        $data['sort'] = $sort;
+        $data['order'] = $order;
+        $data['newOrder'] = $newOrder;
+        
         return view('peces_list', $data);
     }
 

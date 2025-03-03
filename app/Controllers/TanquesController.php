@@ -9,14 +9,19 @@ class TanquesController extends BaseController
     public function index()
     {
         $tanquesModel = new TanquesModel();
-        $data['tanques'] = $tanquesModel->where('FECHA_BAJA', NULL)->findAll(); // Solo tanques activos
 
-        // ------------buscador-------------
+        // Obtener filtros
         $capacidadBusqueda = $this->request->getVar('CAPACIDAD'); 
         $localizacionBusqueda = $this->request->getVar('LOCALIZACION');
         $tipoAguaBusqueda = $this->request->getVar('TIPO_AGUA');
         $estadoBusqueda = $this->request->getVar('estado');
 
+        // Obtener ordenación
+        $sort = $this->request->getVar('sort') ?? 'CAPACIDAD';
+        $order = $this->request->getVar('order') ?? 'asc';
+        $newOrder = ($order === 'asc') ? 'desc' : 'asc';
+
+        // Aplicar filtros
         if ($estadoBusqueda == 'activo') {
             $tanquesModel->where('FECHA_BAJA IS NULL');
         } elseif ($estadoBusqueda == 'baja') {
@@ -25,7 +30,7 @@ class TanquesController extends BaseController
             // No aplicamos ningún filtro de FECHA_BAJA
         }
 
-        if($capacidadBusqueda) {
+        if ($capacidadBusqueda) {
             $tanquesModel->like('CAPACIDAD', $capacidadBusqueda);
         }
 
@@ -37,19 +42,27 @@ class TanquesController extends BaseController
             $tanquesModel->like('TIPO_AGUA', $tipoAguaBusqueda);
         }
 
+        // Aplicar ordenación
+        $tanquesModel->orderBy($sort, $order);
+
+        // Paginación
+        $perPage = 4;
+        $page = $this->request->getVar('page') ?: 1;
+        $data['tanques'] = $tanquesModel->paginate($perPage);
+        $data['pager'] = $tanquesModel->pager;
+
+        // Pasar datos a la vista
         $data['capacidadBusqueda'] = $capacidadBusqueda;
         $data['localizacionBusqueda'] = $localizacionBusqueda;
         $data['tipoAguaBusqueda'] = $tipoAguaBusqueda;
         $data['estadoBusqueda'] = $estadoBusqueda;
+        $data['sort'] = $sort;
+        $data['order'] = $order;
+        $data['newOrder'] = $newOrder;
 
-        // --------paginación-------------
-        $perPage = 4;
-        $page = $this->request->getVar('page') ?: 1;  // Obtener la página actual
-        $data['tanques'] = $tanquesModel->paginate($perPage);
-        $data['pager'] = $tanquesModel->pager;
-        
         return view('tanques_list', $data);
     }
+
 
     public function saveTanques($id = null)
     {

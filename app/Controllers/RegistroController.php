@@ -34,7 +34,7 @@ class RegistroController extends BaseController
             'EMAIL' => $this->request->getPost('email'),
             'CONTRASEÑA_HASH' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'FECHA_REGISTRO' => date('Y-m-d'),
-            'ID_ROL' => 1 // Asignar un rol por defecto, por ejemplo, 1.
+            'ID_ROL' => 2 // Asignar un rol por defecto, por ejemplo, 1.
         ]);
 
         return redirect()->to('/login')->with('success', 'Usuario registrado correctamente.');

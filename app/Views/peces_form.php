@@ -12,6 +12,7 @@
 	];
 
 	$roleName = $roles[$idRol] ?? 'Desconocido';
+	
 ?>
 <!DOCTYPE html>
 <!--

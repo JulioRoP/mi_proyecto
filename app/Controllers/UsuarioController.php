@@ -9,23 +9,24 @@ class UsuarioController extends BaseController
     public function index()
     {
         $usuarioModel = new UsuarioModel();
-        
-        
 
-        
-        // ------------buscador-------------
+        // Obtener filtros
         $nombreUsuarioBusqueda = $this->request->getVar('NOMBRE_USUARIO');
         $emailUsuarioBusqueda = $this->request->getVar('EMAIL');
         $fechaRegistroBusqueda = $this->request->getVar('FECHA_REGISTRO');
         $rolUsuarioBusqueda = $this->request->getVar('ROL');
         $estadoBusqueda = $this->request->getVar('estado');
 
-        // Aplicar los filtros si es necesario
+        // Obtener ordenación
+        $sort = $this->request->getVar('sort') ?? 'NOMBRE_USUARIO';
+        $order = $this->request->getVar('order') ?? 'asc';
+        $newOrder = ($order === 'asc') ? 'desc' : 'asc';
+
+        // Aplicar filtros
         if ($estadoBusqueda == 'activo') {
             $usuarioModel->where('FECHA_BAJA IS NULL');
         } elseif ($estadoBusqueda == 'baja') {
             $usuarioModel->where('FECHA_BAJA IS NOT NULL');
-        } elseif ($estadoBusqueda == 'todos') {
         }
 
         if ($nombreUsuarioBusqueda) {
@@ -41,24 +42,31 @@ class UsuarioController extends BaseController
         }
 
         if ($rolUsuarioBusqueda) {
-            $usuarioModel->like('ROLES.NOMBRE_ROL', $rolUsuarioBusqueda); // Cambia ID_ROL por NOMBRE_ROL
+            $usuarioModel->like('ROLES.NOMBRE_ROL', $rolUsuarioBusqueda);
         }
-        
 
+        // Aplicar ordenación
+        $usuarioModel->orderBy($sort, $order);
+
+        // Paginación
+        $perPage = 4;
+        $page = $this->request->getVar('page') ?: 1;
+        $data['usuarios'] = $usuarioModel->get_usuarios_with_roles_paginated($perPage);
+        $data['pager'] = $usuarioModel->pager;
+
+        // Pasar datos a la vista
         $data['nombreUsuarioBusqueda'] = $nombreUsuarioBusqueda;
         $data['emailUsuarioBusqueda'] = $emailUsuarioBusqueda;
         $data['fechaRegistroBusqueda'] = $fechaRegistroBusqueda;
         $data['rolUsuarioBusqueda'] = $rolUsuarioBusqueda;
         $data['estadoBusqueda'] = $estadoBusqueda;
+        $data['sort'] = $sort;
+        $data['order'] = $order;
+        $data['newOrder'] = $newOrder;
 
-        // --------paginacion-------------
-        $perPage = 4;  // Definir cuántos usuarios por página
-        $page = $this->request->getVar('page') ?: 1;
-        $data['usuarios'] = $usuarioModel->get_usuarios_with_roles_paginated($perPage);
-        $data['pager'] = $usuarioModel->pager;
-        // --------paginacion------------
         return view('usuario_list', $data);
     }
+
 
 
     public function saveUsuario($id = null)
@@ -164,63 +172,84 @@ class UsuarioController extends BaseController
     }
 
     public function exportarCSV()
-    {
-        $usuarioModel = new UsuarioModel();
+{
+    $usuarioModel = new UsuarioModel();
 
-        // Si deseas aplicar filtros antes de exportar (puedes adaptarlo según lo necesites)
-        $estadoBusqueda = $this->request->getVar('estado');
-        
-        // Realizar la unión con la tabla ROLES para obtener el NOMBRE_ROL
-        if ($estadoBusqueda == 'activo') {
-            // Filtrar usuarios activos
-            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
-                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
-                                            ->where('FECHA_BAJA', NULL)
-                                            ->findAll();
-        } elseif ($estadoBusqueda == 'baja') {
-            // Filtrar usuarios dados de baja
-            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
-                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
-                                            ->where('FECHA_BAJA IS NOT NULL')
-                                            ->findAll();
-        } else {
-            // Sin filtro, obtener todos los usuarios
-            $data['usuarios'] = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
-                                            ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
-                                            ->findAll();
-        }
+    // Obtener filtros desde la request
+    $nombreUsuarioBusqueda = $this->request->getVar('NOMBRE_USUARIO');
+    $emailUsuarioBusqueda = $this->request->getVar('EMAIL');
+    $fechaRegistroBusqueda = $this->request->getVar('FECHA_REGISTRO');
+    $rolUsuarioBusqueda = $this->request->getVar('ROL');
+    $estadoBusqueda = $this->request->getVar('estado');
 
-        // Definir el nombre del archivo CSV
-        $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
+    // Obtener ordenación
+    $sort = $this->request->getVar('sort') ?? 'NOMBRE_USUARIO';
+    $order = $this->request->getVar('order') ?? 'asc';
 
-        // Abrir el archivo en modo escritura
-        $file = fopen('php://output', 'w');
-
-        // Establecer el encabezado de las columnas para el CSV
-        $header = ['ID_USUARIO', 'NOMBRE_USUARIO', 'EMAIL', 'ROL', 'FECHA_REGISTRO', 'FECHA_BAJA'];
-        fputcsv($file, $header);
-
-        // Escribir los datos de cada usuario
-        foreach ($data['usuarios'] as $usuario) {
-            fputcsv($file, [
-                $usuario['ID_USUARIO'],
-                $usuario['NOMBRE_USUARIO'],
-                $usuario['EMAIL'],
-                $usuario['NOMBRE_ROL'],  // Aquí ahora se toma el nombre del rol de la tabla ROLES
-                $usuario['FECHA_REGISTRO'],
-                $usuario['FECHA_BAJA']
-            ]);
-        }
-
-        // Cerrar el archivo
-        fclose($file);
-
-        // Establecer las cabeceras HTTP para forzar la descarga del archivo CSV
-        return $this->response->setHeader('Content-Type', 'application/csv')
-                                ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
-                                ->setHeader('Pragma', 'no-cache')
-                                ->setHeader('Expires', '0');
+    // Aplicar filtros
+    if ($estadoBusqueda == 'activo') {
+        $usuarioModel->where('FECHA_BAJA IS NULL');
+    } elseif ($estadoBusqueda == 'baja') {
+        $usuarioModel->where('FECHA_BAJA IS NOT NULL');
     }
+
+    if ($nombreUsuarioBusqueda) {
+        $usuarioModel->like('NOMBRE_USUARIO', $nombreUsuarioBusqueda);
+    }
+
+    if ($emailUsuarioBusqueda) {
+        $usuarioModel->like('EMAIL', $emailUsuarioBusqueda);
+    }
+
+    if ($fechaRegistroBusqueda) {
+        $usuarioModel->like('FECHA_REGISTRO', $fechaRegistroBusqueda);
+    }
+
+    if ($rolUsuarioBusqueda) {
+        $usuarioModel->like('ROLES.NOMBRE_ROL', $rolUsuarioBusqueda);
+    }
+
+    // Aplicar ordenación
+    $usuarioModel->orderBy($sort, $order);
+
+    // Realizar la unión con la tabla ROLES para obtener el NOMBRE_ROL
+    $usuarios = $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')
+                             ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
+                             ->findAll();
+
+    // Definir el nombre del archivo CSV
+    $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
+
+    // Abrir el archivo en modo escritura
+    $file = fopen('php://output', 'w');
+
+    // Establecer el encabezado de las columnas para el CSV
+    $header = ['NOMBRE_USUARIO', 'EMAIL', 'ROL', 'FECHA_REGISTRO', 'FECHA_BAJA'];
+    fputcsv($file, $header);
+
+    // Escribir los datos de cada usuario, sin incluir el ID
+    foreach ($usuarios as $usuario) {
+        fputcsv($file, [
+            $usuario['NOMBRE_USUARIO'],
+            $usuario['EMAIL'],
+            $usuario['NOMBRE_ROL'],  // Aquí ahora se toma el nombre del rol de la tabla ROLES
+            $usuario['FECHA_REGISTRO'],
+            $usuario['FECHA_BAJA']
+        ]);
+    }
+
+    // Cerrar el archivo
+    fclose($file);
+
+    // Establecer las cabeceras HTTP para forzar la descarga del archivo CSV
+    return $this->response->setHeader('Content-Type', 'application/csv')
+                            ->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+                            ->setHeader('Pragma', 'no-cache')
+                            ->setHeader('Expires', '0');
+}
+
+
+
 
 
 

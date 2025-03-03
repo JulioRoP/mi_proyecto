@@ -9,22 +9,23 @@ class ProveedoresController extends BaseController
     public function index()
     {
         $proveedoresModel = new ProveedoresModel();
-        $data['proveedores'] = $proveedoresModel->where('FECHA_BAJA', NULL)->findAll(); // Solo proveedores activos
 
-        // ------------ Buscador -------------
-        $nombreProveedorBusqueda = $this->request->getVar('NOMBRE_PROVEEDOR');  // Obtener el término de búsqueda desde el formulario
+        // Obtener los filtros de la URL
+        $nombreProveedorBusqueda = $this->request->getVar('NOMBRE_PROVEEDOR');
         $tipoProductoBusqueda = $this->request->getVar('TIPO_PRODUCTO');
         $telefonoBusqueda = $this->request->getVar('TELEFONO');
         $emailBusqueda = $this->request->getVar('EMAIL');
         $estadoBusqueda = $this->request->getVar('estado');
+        $ordenarPor = $this->request->getVar('ordenar') ?: 'NOMBRE_PROVEEDOR'; // Campo a ordenar (por defecto)
+        $direccion = $this->request->getVar('direccion') ?: 'asc'; // Dirección de orden (asc o desc)
 
+        // Aplicar filtros
         if ($estadoBusqueda == 'activo') {
-            $proveedoresModel->where('FECHA_BAJA IS NULL');  // Solo activos
+            $proveedoresModel->where('FECHA_BAJA IS NULL');
         } elseif ($estadoBusqueda == 'baja') {
-            $proveedoresModel->where('FECHA_BAJA IS NOT NULL');  // Solo dados de baja
+            $proveedoresModel->where('FECHA_BAJA IS NOT NULL');
         }
 
-        // Filtros adicionales
         if ($nombreProveedorBusqueda) {
             $proveedoresModel->like('NOMBRE_PROVEEDOR', $nombreProveedorBusqueda);
         }
@@ -38,20 +39,26 @@ class ProveedoresController extends BaseController
             $proveedoresModel->like('EMAIL', $emailBusqueda);
         }
 
+        // Aplicar ordenación
+        $proveedoresModel->orderBy($ordenarPor, $direccion);
+
+        // Paginación
+        $perPage = 4;
+        $data['proveedores'] = $proveedoresModel->paginate($perPage);
+        $data['pager'] = $proveedoresModel->pager;
+
+        // Pasar datos a la vista
         $data['nombreProveedorBusqueda'] = $nombreProveedorBusqueda;
         $data['tipoProductoBusqueda'] = $tipoProductoBusqueda;
         $data['telefonoBusqueda'] = $telefonoBusqueda;
         $data['emailBusqueda'] = $emailBusqueda;
         $data['estadoBusqueda'] = $estadoBusqueda;
-
-        // Paginación
-        $perPage = 4; // Número de elementos por página
-        $page = $this->request->getVar('page') ?: 1;  // Obtener la página actual
-        $data['proveedores'] = $proveedoresModel->paginate($perPage);
-        $data['pager'] = $proveedoresModel->pager;
+        $data['ordenarPor'] = $ordenarPor;
+        $data['direccion'] = $direccion;
 
         return view('proveedores_list', $data);
     }
+
 
     public function saveProveedores($id = null)
     {
