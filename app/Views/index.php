@@ -712,7 +712,7 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="col-md-6 col-xl-3">
 										<div class="card card-custom" style="max-height: 300px;">
 											<div class="card-body">
-												<h5 class="card-title">Ventas Mensuales de Pescado</h5>
+												<h5 class="card-title">Ventas Mensuales</h5>
 												<canvas id="chart4"></canvas>
 											</div>
 										</div>
@@ -738,19 +738,19 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-muted fw-bold me-1">2021©</span>
-								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Inicio</a>
 							</div>
 							<!--end::Copyright-->
 							<!--begin::Menu-->
 							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 								<li class="menu-item">
-									<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+									<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">Sobre Nosotros</a>
 								</li>
 								<li class="menu-item">
-									<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Support</a>
+									<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Soporte</a>
 								</li>
 								<li class="menu-item">
-									<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+									<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Comprar</a>
 								</li>
 							</ul>
 							<!--end::Menu-->
