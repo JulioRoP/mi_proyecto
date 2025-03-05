@@ -123,6 +123,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+							<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link active" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
@@ -131,6 +132,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
@@ -162,6 +164,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+							<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -170,6 +173,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -491,14 +495,41 @@ License: For each use you must have a valid license purchased only from above li
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 											<!--begin::Table head-->
 											<thead>
-												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_USUARIO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Nombre</a></th>
-													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'EMAIL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Email</a></th>
-													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'CONTRASEÑA_HASH', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Contraseña</a></th>
-													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_REGISTRO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Fecha Registro</a></th>
-													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_ROL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Rol</a></th>
+											<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+												<th>
+													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_USUARIO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+														Nombre
+														<?= ($_GET['sort'] ?? '') === 'NOMBRE_USUARIO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+													</a>
+												</th>
+												<th>
+													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'EMAIL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+														Email
+														<?= ($_GET['sort'] ?? '') === 'EMAIL' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+													</a>
+												</th>
+												<th>
+													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'CONTRASEÑA_HASH', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+														Contraseña
+														<?= ($_GET['sort'] ?? '') === 'CONTRASEÑA_HASH' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+													</a>
+												</th>
+												<th>
+													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_REGISTRO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+														Fecha Registro
+														<?= ($_GET['sort'] ?? '') === 'FECHA_REGISTRO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+													</a>
+												</th>
+												<th>
+													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_ROL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+														Rol
+														<?= ($_GET['sort'] ?? '') === 'NOMBRE_ROL' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+													</a>
+												</th>
+												<?php if ($roleName === 'Administrador'): ?>
 													<th class="text-end min-w-100px">Acciones</th>
-												</tr>
+												<?php endif; ?>
+											</tr>
 											</thead>
 											<tbody class="text-gray-600 fw-bold">
 												<h1 class="text-center">Listado de Usuarios</h1><br><br>

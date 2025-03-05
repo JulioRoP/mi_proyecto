@@ -123,6 +123,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+							<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
@@ -131,6 +132,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
@@ -162,6 +164,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -170,6 +173,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -486,12 +490,29 @@ License: For each use you must have a valid license purchased only from above li
 										<!--begin::Table-->
 										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 											<thead>
-												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-													<th><a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'CAPACIDAD', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Capacidad</a></th>
-													<th><a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'LOCALIZACION', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Localización</a></th>
-													<th><a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'TIPO_AGUA', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Tipo de agua</a></th>
-													<th class="text-end min-w-100px">Acciones</th>
-												</tr>
+											<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+											<th>
+												<a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'CAPACIDAD', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+													Capacidad
+													<?= ($_GET['sort'] ?? '') === 'CAPACIDAD' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+												</a>
+											</th>
+											<th>
+												<a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'LOCALIZACION', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+													Localización
+													<?= ($_GET['sort'] ?? '') === 'LOCALIZACION' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+												</a>
+											</th>
+											<th>
+												<a href="<?= base_url('tanques?' . http_build_query(array_merge($_GET, ['sort' => 'TIPO_AGUA', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+													Tipo de agua
+													<?= ($_GET['sort'] ?? '') === 'TIPO_AGUA' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+												</a>
+											</th>
+											<?php if ($roleName === 'Administrador'): ?>
+												<th class="text-end min-w-100px">Acciones</th>
+											<?php endif; ?>
+										</tr>
 											</thead>
 											<tbody class="text-gray-600 fw-bold">
 												<h1 class="text-center">Listado de Tanques</h1><br><br>

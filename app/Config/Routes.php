@@ -13,7 +13,7 @@ $routes->get('home', 'Home::index');
 
 
 // -----------------de aloso rutas-----------
-$routes->get('usuarios', 'UsuarioController::index'); // Listar usuarios
+$routes->get('usuarios', 'UsuarioController::index', ['filter' => 'filtroAcceso']); // Listar usuarios
 $routes->get('usuarios/save', 'UsuarioController::saveUsuario', ['filter' => 'filtroAcceso']); // Crear usuario
 $routes->get('usuarios/save/(:num)', 'UsuarioController::saveUsuario/$1',['filter' => 'filtroAcceso']); // Editar usuario
 $routes->post('usuarios/save', 'UsuarioController::saveUsuario',['filter' => 'filtroAcceso']); // Guardar nuevo usuario (POST)

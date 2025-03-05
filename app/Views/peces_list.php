@@ -69,7 +69,7 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="http://localhost/mi_proyecto/public/">
-						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
+						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg	" class="h-25px logo" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
@@ -124,6 +124,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
@@ -132,6 +133,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
@@ -163,6 +165,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg show">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -171,6 +174,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link active" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -503,14 +507,42 @@ License: For each use you must have a valid license purchased only from above li
 											<thead>
 												<!--begin::Table row-->
 												
-											<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-												<th><a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'ESPECIE', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Usuario</a></th>
-												<th><a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_NACIMIENTO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Fecha de nacimiento</a></th>
-												<th><a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'PESO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Peso</a></th>
-												<th><a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'LONGITUD', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Longitud</a></th>
-												<th><a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'TIPO_AGUA', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Tipo de agua</a></th>
-												<th class="text-end min-w-100px">Acciones</th>
-											</tr>
+												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+													<th>
+														<a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'ESPECIE', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+															Usuario
+															<?= ($_GET['sort'] ?? '') === 'ESPECIE' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th>
+														<a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_NACIMIENTO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+															Fecha de nacimiento
+															<?= ($_GET['sort'] ?? '') === 'FECHA_NACIMIENTO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th>
+														<a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'PESO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+															Peso
+															<?= ($_GET['sort'] ?? '') === 'PESO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th>
+														<a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'LONGITUD', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+															Longitud
+															<?= ($_GET['sort'] ?? '') === 'LONGITUD' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th>
+														<a href="<?= base_url('peces?' . http_build_query(array_merge($_GET, ['sort' => 'TIPO_AGUA', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
+															Tipo de agua
+															<?= ($_GET['sort'] ?? '') === 'TIPO_AGUA' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<?php if ($roleName === 'Administrador'): ?>
+														<th class="text-end min-w-100px">Acciones</th>
+													<?php endif; ?>
+												</tr>
+
 												<!--end::Table row-->
 											</thead>
 											<!--end::Table head-->

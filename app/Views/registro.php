@@ -55,18 +55,27 @@
                         <!--end::Input group-->
                         
                         <!--begin::Input group-->
+                        <!--begin::Input group-->
                         <div class="mb-10 fv-row">
                             <label class="form-label fw-bolder text-dark fs-6">Contraseña</label>
                             <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" required />
                             <div class="text-muted">Usa 8 o más caracteres.</div>
+                            <?php if (isset($validation) && $validation->getError('password')): ?>
+                                <div class="text-danger"><?= $validation->getError('password') ?></div>
+                            <?php endif; ?>
                         </div>
                         <!--end::Input group-->
-                        
+
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <label class="form-label fw-bolder text-dark fs-6">Confirmar Contraseña</label>
                             <input class="form-control form-control-lg form-control-solid" type="password" name="password_confirm" autocomplete="off" required />
+                            <?php if (isset($validation) && $validation->getError('password_confirm')): ?>
+                                <div class="text-danger"><?= $validation->getError('password_confirm') ?></div>
+                            <?php endif; ?>
                         </div>
+                        <!--end::Input group-->
+
                         <!--end::Input group-->
                         
                         <!--begin::Input group-->

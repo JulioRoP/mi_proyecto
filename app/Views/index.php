@@ -123,6 +123,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+							<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
@@ -131,6 +132,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
@@ -162,6 +164,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -170,6 +173,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -369,13 +373,16 @@ License: For each use you must have a valid license purchased only from above li
 														<div class="col bg-light-success px-6 py-8 rounded-2">
 															<!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
 															<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
+															<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path d="M6 8.725C6 8.125 6.4 7.725 7 7.725H14L18 11.725V12.925L22 9.725L12.6 2.225C12.2 1.925 11.7 1.925 11.4 2.225L2 9.725L6 12.925V8.725Z" fill="black" />
-																	<path opacity="0.3" d="M22 9.72498V20.725C22 21.325 21.6 21.725 21 21.725H3C2.4 21.725 2 21.325 2 20.725V9.72498L11.4 17.225C11.8 17.525 12.3 17.525 12.6 17.225L22 9.72498ZM15 11.725H18L14 7.72498V10.725C14 11.325 14.4 11.725 15 11.725Z" fill="black" />
+																	<path d="M12 3C12 3 5 10.2 5 15C5 18.87 8.13 22 12 22C15.87 22 19 18.87 19 15C19 10.2 12 3 12 3Z" fill="black"/>
+																	<path opacity="0.3" d="M12 19C9.79 19 8 17.21 8 15C8 14.08 8.52 12.82 9.42 11.42C10.17 10.27 11.08 9.22 11.6 8.63C11.81 8.39 12.19 8.39 12.4 8.63C12.92 9.22 13.83 10.27 14.58 11.42C15.48 12.82 16 14.08 16 15C16 17.21 14.21 19 12 19Z" fill="black"/>
 																</svg>
 															</span>
+
+
 															<!--end::Svg Icon-->
-															<a href="#" class="text-success fw-bold fs-6 mt-2">Bug Reports</a>
+															<a href="http://localhost/mi_proyecto/public/peces" class="text-success fw-bold fs-6 mt-2">Peces</a>
 														</div>
 														<!--end::Col-->
 													</div>

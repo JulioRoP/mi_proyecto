@@ -122,6 +122,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg show">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
@@ -130,6 +131,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link active" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
@@ -161,6 +163,7 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
+								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -169,6 +172,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
+								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -506,7 +510,9 @@ License: For each use you must have a valid license purchased only from above li
 															Email <?= ($ordenarPor == 'EMAIL') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
 														</a>
 													</th>
+													<?php if ($roleName === 'Administrador'): ?>
 													<th class="text-end min-w-100px">Acciones</th>
+													<?php endif; ?>
 												</tr>
 											</thead>
 											<tbody class="text-gray-600 fw-bold">

@@ -18,7 +18,7 @@ class RegistroController extends BaseController
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
             'email' => 'required|valid_email|is_unique[usuarios.EMAIL]',
-            'password' => 'required|min_length[6]',
+            'password' => 'required|min_length[8]',
             'password_confirm' => 'required|matches[password]',
         ];
 
