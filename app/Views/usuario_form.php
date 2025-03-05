@@ -60,6 +60,35 @@ License: For each use you must have a valid license purchased only from above li
 	}
 
 	</style>
+	<style>
+	.aside-logo {
+    display: flex; /* Alinea los elementos horizontalmente */
+    justify-content: flex-start; /* Alinea los elementos al principio */
+    align-items: center; /* Alinea verticalmente el logo y el botón */
+    padding-top: 50px; /* Ajusta el espacio superior */
+    min-height: 100px; /* Asegura que el contenedor tenga suficiente altura */
+}
+
+.logo-custom {
+    height: 200px; /* Ajusta el tamaño del logo */
+    width: auto; /* Mantiene la proporción */
+    margin-right: 0px; /* Acerca el logo al icono */
+}
+
+#kt_aside_toggle {
+    display: flex; /* Centra el icono dentro del contenedor */
+    justify-content: center; /* Alinea el icono horizontalmente */
+    align-items: center; /* Alinea el icono verticalmente */
+    padding: 15px; /* Aumenta el área del botón */
+    cursor: pointer; /* Hace que el botón sea clickeable */
+    font-size: 30px; /* Aumenta el tamaño del icono */
+}
+
+#kt_aside_toggle .svg-icon {
+    width: 40px; /* Aumenta el tamaño del icono */
+    height: 40px; /* Aumenta el tamaño del icono */
+}
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -76,10 +105,11 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="http://localhost/mi_proyecto/public/">
-						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
+						<img alt="Logo" src="../assets/media/logos/logo-1-dark.png" class="logo-custom" />
 					</a>
 					<!--end::Logo-->
-					<!--begin::Aside toggler-->
+					
+					<!--begin::Aside toggler (botón)-->
 					<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
 						<span class="svg-icon svg-icon-1 rotate-180">

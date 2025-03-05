@@ -19,9 +19,9 @@
             <!--begin::Content-->
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <!--begin::Logo-->
-                <a href="../../demo1/dist/index.html" class="mb-12">
-                    <img alt="Logo" src="assets/media/logos/logo-1.svg" class="h-40px" />
-                </a>
+                
+                <img alt="Logo" src="assets/media/logos/logo-1-darklg.png" class="500px" style="height: 150px; width: auto; display: block; margin: 0; padding: 0; line-height: 0; vertical-align: top;"/>
+                
                 <!--end::Logo-->
                 <!--begin::Wrapper-->
                 <div class="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">

@@ -57,26 +57,35 @@ License: For each use you must have a valid license purchased only from above li
 
 	<!-- FullCalendar CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-	<!-- <style>
-    .fc-event {
-    overflow: visible !important;
-    white-space: normal !important;
-    text-overflow: unset !important;
-	}
+	<style>
+	.aside-logo {
+    display: flex; /* Alinea los elementos horizontalmente */
+    justify-content: flex-start; /* Alinea los elementos al principio */
+    align-items: center; /* Alinea verticalmente el logo y el botón */
+    padding-top: 50px; /* Ajusta el espacio superior */
+    min-height: 100px; /* Asegura que el contenedor tenga suficiente altura */
+}
 
-	.fc-event:hover::after {
-		content: attr(title);
-		position: absolute;
-		background: rgba(0, 0, 0, 0.8);
-		color: #fff;
-		padding: 5px;
-		border-radius: 5px;
-		font-size: 12px;
-		white-space: nowrap;
-		z-index: 100;
-		transform: translateY(-100%);
-	}
-</style> -->
+.logo-custom {
+    height: 200px; /* Ajusta el tamaño del logo */
+    width: auto; /* Mantiene la proporción */
+    margin-right: 0px; /* Acerca el logo al icono */
+}
+
+#kt_aside_toggle {
+    display: flex; /* Centra el icono dentro del contenedor */
+    justify-content: center; /* Alinea el icono horizontalmente */
+    align-items: center; /* Alinea el icono verticalmente */
+    padding: 15px; /* Aumenta el área del botón */
+    cursor: pointer; /* Hace que el botón sea clickeable */
+    font-size: 30px; /* Aumenta el tamaño del icono */
+}
+
+#kt_aside_toggle .svg-icon {
+    width: 40px; /* Aumenta el tamaño del icono */
+    height: 40px; /* Aumenta el tamaño del icono */
+}
+	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -93,10 +102,11 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="http://localhost/mi_proyecto/public/">
-						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
+						<img alt="Logo" src="../assets/media/logos/logo-1-dark.png" class="logo-custom" />
 					</a>
 					<!--end::Logo-->
-					<!--begin::Aside toggler-->
+					
+					<!--begin::Aside toggler (botón)-->
 					<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
 						<span class="svg-icon svg-icon-1 rotate-180">
@@ -417,6 +427,7 @@ License: For each use you must have a valid license purchased only from above li
 
 													// Inicializar FullCalendar
 													const calendar = new FullCalendar.Calendar(calendarEl, {
+														locale: 'es',  // Configura el calendario en español
 														initialView: 'dayGridMonth',
 														selectable: true,
 														editable: true,
@@ -461,53 +472,64 @@ License: For each use you must have a valid license purchased only from above li
 
 															// Guardar evento
 															$('#saveEvent').off('click').on('click', function() {
-																const title = $('#eventTitle').val();
-																const description = $('#eventDescription').val();
-																const fechaInicio = $('#eventStart').val();
-																const fechaFin = $('#eventEnd').val(); // Puede estar vacío
+    const title = $('#eventTitle').val();
+    const description = $('#eventDescription').val();
+    const fechaInicio = $('#eventStart').val();
+    const fechaFin = $('#eventEnd').val(); // Puede estar vacío
 
-																if (title && description) {
-																	$.ajax({
-																		url: "<?= base_url('/') ?>add-event",
-																		type: "POST",
-																		contentType: "application/json",
-																		data: JSON.stringify({
-																			TITULO: title,
-																			FECHA_INICIO: fechaInicio,
-																			FECHA_FIN: fechaFin || null, // Si está vacío, se envía como null
-																			DESCRIPCION_ES: description,
-																			DESCRIPCION_ENG: description
-																		}),
-																		success: function(response) {
-																			Swal.fire({
-																				icon: 'success',
-																				title: 'Evento Agregado',
-																				text: 'El evento se ha agregado correctamente al calendario.',
-																				timer: 2000
-																			});
+    // Verificar si la fecha de fin es anterior a la fecha de inicio
+    if (fechaFin && moment(fechaFin).isBefore(moment(fechaInicio))) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Fecha inválida',
+            text: 'La fecha de fin no puede ser anterior a la fecha de inicio.',
+            timer: 2000
+        });
+        return; // Detener la ejecución si la validación falla
+    }
 
-																			calendar.refetchEvents();
-																			$('#eventModal').modal('hide');
-																		},
-																		error: function(xhr) {
-																			console.error("Error al agregar evento:", xhr.responseText);
-																			Swal.fire({
-																				icon: 'error',
-																				title: 'Error',
-																				text: 'Hubo un problema al agregar el evento.',
-																				timer: 2000
-																			});
-																		}
-																	});
-																} else {
-																	Swal.fire({
-																		icon: 'warning',
-																		title: 'Campos incompletos',
-																		text: 'Por favor, ingresa todos los datos del evento.',
-																		timer: 2000
-																	});
-																}
-															});
+    if (title && description) {
+        $.ajax({
+            url: "<?= base_url('/') ?>add-event",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                TITULO: title,
+                FECHA_INICIO: fechaInicio,
+                FECHA_FIN: fechaFin || null, // Si está vacío, se envía como null
+                DESCRIPCION_ES: description,
+                DESCRIPCION_ENG: description
+            }),
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Evento Agregado',
+                    text: 'El evento se ha agregado correctamente al calendario.',
+                    timer: 2000
+                });
+
+                calendar.refetchEvents();
+                $('#eventModal').modal('hide');
+            },
+            error: function(xhr) {
+                console.error("Error al agregar evento:", xhr.responseText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al agregar el evento.',
+                    timer: 2000
+                });
+            }
+        });
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campos incompletos',
+            text: 'Por favor, ingresa todos los datos del evento.',
+            timer: 2000
+        });
+    }
+});
 														},
 														eventDidMount: function(info) {
 															$(info.el).tooltip({
