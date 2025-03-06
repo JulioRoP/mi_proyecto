@@ -310,7 +310,7 @@ License: For each use you must have a valid license purchased only from above li
 									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 										<!--begin::Item-->
 										<li class="breadcrumb-item text-muted">
-											<a href="http://localhost/mi_proyecto/public/" class="text-muted text-hover-primary">Home</a>
+											<a href="http://localhost/mi_proyecto/public/" class="text-muted text-hover-primary">Inicio</a>
 										</li>
 										<li class="breadcrumb-item">
 											<span class="bullet bg-gray-200 w-5px h-2px"></span>

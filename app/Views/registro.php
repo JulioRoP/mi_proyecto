@@ -10,6 +10,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <style>
+		/* Estilo para los asteriscos rojos */
+	.asterisco-rojo {
+		color: red;
+		font-weight: bold;
+	}
+
+	</style>
 </head>
 <body id="kt_body" class="bg-body">
     <!--begin::Main-->
@@ -39,7 +47,7 @@
                         
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
-                            <label class="form-label fw-bolder text-dark fs-6">Nombre de usuario</label>
+                            <label class="form-label fw-bolder text-dark fs-6">Nombre de usuario <span class="asterisco-rojo"> *</span></label>
                             <input class="form-control form-control-lg form-control-solid" type="text" name="name" value="<?= set_value('name') ?>" autocomplete="off" required />
                             <?php if (isset($validation) && $validation->getError('name')): ?>
                                 <div class="text-danger"><?= $validation->getError('name') ?></div>
@@ -49,7 +57,7 @@
                         
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
-                            <label class="form-label fw-bolder text-dark fs-6">Correo electrónico</label>
+                            <label class="form-label fw-bolder text-dark fs-6">Correo electrónico <span class="asterisco-rojo"> *</span></label>
                             <input class="form-control form-control-lg form-control-solid" type="email" name="email" value="<?= set_value('email') ?>" autocomplete="off" required />
                         </div>
                         <!--end::Input group-->
@@ -57,7 +65,7 @@
                         <!--begin::Input group-->
                         <!--begin::Input group-->
                         <div class="mb-10 fv-row">
-                            <label class="form-label fw-bolder text-dark fs-6">Contraseña</label>
+                            <label class="form-label fw-bolder text-dark fs-6">Contraseña <span class="asterisco-rojo"> *</span></label>
                             <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" required />
                             <div class="text-muted">Usa 8 o más caracteres.</div>
                             <?php if (isset($validation) && $validation->getError('password')): ?>
@@ -68,7 +76,7 @@
 
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
-                            <label class="form-label fw-bolder text-dark fs-6">Confirmar Contraseña</label>
+                            <label class="form-label fw-bolder text-dark fs-6">Confirmar Contraseña <span class="asterisco-rojo"> *</span></label>
                             <input class="form-control form-control-lg form-control-solid" type="password" name="password_confirm" autocomplete="off" required />
                             <?php if (isset($validation) && $validation->getError('password_confirm')): ?>
                                 <div class="text-danger"><?= $validation->getError('password_confirm') ?></div>
