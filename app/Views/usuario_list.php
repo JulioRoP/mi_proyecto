@@ -25,7 +25,7 @@ Dribbble: www.dribbble.com/keenthemes
 Like: www.facebook.com/keenthemes
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="es">
 <!--begin::Head-->
 
 <head>
@@ -52,6 +52,10 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+	<!-- Incluir jQuery y DataTables -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 	<style>
 	.aside-logo {
     display: flex; /* Alinea los elementos horizontalmente */
@@ -363,274 +367,102 @@ License: For each use you must have a valid license purchased only from above li
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::Post-->
-						<div class="post d-flex flex-column-fluid" id="kt_post">
-							<!--begin::Container-->
-							<div id="kt_content_container" class="container-xxl">
-								<!--begin::Card-->
-								<div class="card">
-									<!--begin::Card header-->
-									<div class="card-header border-0 pt-6">
-										<!--begin::Card title-->
-										<div class="card-title">
-											<!--begin::buscador quitado-->
-
-											<!--end::Search-->
-										</div>
-										<!--begin::Card title-->
-										<!--begin::Card toolbar-->
-										<div class="card-toolbar">
-											<!--begin::Toolbar-->
-											<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-												<!--begin::Filter-->
-												<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-													<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
-													<span class="svg-icon svg-icon-2">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
-														</svg>
-													</span>
-													<!--end::Svg Icon-->Filtro</button>
-												<!--begin::Menu 1-->
-												<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
-													<!--begin::Header-->
-													<div class="px-7 py-5">
-														<div class="fs-5 text-dark fw-bolder">Filtro Opciones</div>
-													</div>
-													<!--end::Header-->
-													<!--begin::Separator-->
-													<div class="separator border-gray-200"></div>
-													<!--end::Separator-->
-													<!--begin::Content-->
-													<div class="px-7 py-5" data-kt-user-table-filter="form">
-														<!--begin::Input group-->
-														<div class="mb-10">
-
-															<form method="GET" action="<?= base_url('usuarios') ?>" class="mb-3">
-																<div class="container">
-																	<!-- Campo Especie -->
-																	<div class="mb-3">															
-																		<input type="text" name="NOMBRE_USUARIO" class="form-control" placeholder="Nombre" value="<?= $nombreUsuarioBusqueda ?>">
-																	</div>
-
-																	<!-- Campo Fecha de Nacimiento -->
-																	<div class="mb-3">
-																		<input type="text" name="EMAIL" class="form-control" placeholder="Email" value="<?= isset($emailUsuarioBusqueda) ? $emailUsuarioBusqueda : '' ?>">
-																	</div>
-
-																	<!-- Campo Peso -->
-																	<div class="mb-3">
-																		<input type="date" step="any" name="FECHA_REGISTRO" class="form-control" placeholder="Fecha de Registro" value="<?= isset($fechaRegistroBusqueda) ? $fechaRegistroBusqueda : '' ?>">
-																	</div>
-
-																	<!-- Campo Longitud -->
-																	<!-- Select para Rol -->
-																	<div class="mb-3">
-																		<select name="ROL" class="form-control">
-																			<option value="" disabled selected>Selecciona el Rol</option>
-																			<option value="1" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '1' ? 'selected' : '' ?>>Administrador</option>
-																			<option value="2" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '2' ? 'selected' : '' ?>>Visitante</option>
-																			<!-- Puedes añadir más opciones si tienes otros roles -->
-																		</select>
-																	</div>
-
-
-																	<!-- Select para Estado -->
-																	<div class="mb-3">
-																		<select name="estado" class="form-control" onchange="this.form.submit()">
-																			<option value="" disabled selected>Estado</option>
-																			<option value="activo" <?= isset($estadoBusqueda) && $estadoBusqueda == 'activo' ? 'selected' : '' ?>>Activo</option>
-																			<option value="baja" <?= isset($estadoBusqueda) && $estadoBusqueda == 'baja' ? 'selected' : '' ?>>De baja</option>
-																			<option value="todos" <?= isset($estadoBusqueda) && $estadoBusqueda == 'todos' ? 'selected' : '' ?>>Todos</option>
-																		</select>
-																	</div>
-
-																	<!-- Botón de Buscar -->
-																	<div class="mb-3">
-																		<button type="submit" class="btn btn-primary">Buscar</button>
-																	</div>
-																</div>
-															</form>
-
-
-
-
-
-
-
-
-
-
-
-
-														</div>
-
-													</div>
-													<!--end::Content-->
-												</div>
-												<!--end::Menu 1-->
-												<!--end::Filter-->
-												<!--begin::Export-->
-												<a href="<?= base_url('usuarios/exportarCSV') ?>" class="btn btn-light-primary me-3">
-													<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-													<span class="svg-icon svg-icon-2">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
-															<path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
-															<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
-														</svg>
-													</span>
-													<!--end::Svg Icon-->Exportar
-												</a>
-												<!--end::Export-->
-												<!--begin::Add user-->
-												<?php if ($roleName === 'Administrador'): ?>
-													<a href="<?= base_url('usuarios/save') ?>">
-														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-															<span class="svg-icon svg-icon-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-																	<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-																</svg>
-															</span>
-															Añadir Usuario
-														</button>
-													</a>
-												<?php endif; ?>
-
-
-												<!--end::Add user-->
-											</div>
-											<!--end::Toolbar-->
-											<!--begin::Group actions-->
-											<div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
-												<div class="fw-bolder me-5">
-													<span class="me-2" data-kt-user-table-select="selected_count"></span>Selected
-												</div>
-												<button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
-											</div>
-											<!--end::Group actions-->
-											<!--begin::Modal - Adjust Balance-->
-
-											<!--end::Modal - New Card-->
-											<!--begin::Modal - Add task-->
-
-											<!--end::Modal - Add task-->
-										</div>
-										<!--end::Card toolbar-->
-									</div>
-									<!--end::Card header-->
-									<!--begin::Card body-->
-									<div class="card-body pt-0">
-										<!--begin::Table-->
-										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-											<!--begin::Table head-->
-											<thead>
-											<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-												<th>
-													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_USUARIO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
-														Nombre
-														<?= ($_GET['sort'] ?? '') === 'NOMBRE_USUARIO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
-													</a>
-												</th>
-												<th>
-													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'EMAIL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
-														Email
-														<?= ($_GET['sort'] ?? '') === 'EMAIL' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
-													</a>
-												</th>
-												<th>
-													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'CONTRASEÑA_HASH', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
-														Contraseña
-														<?= ($_GET['sort'] ?? '') === 'CONTRASEÑA_HASH' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
-													</a>
-												</th>
-												<th>
-													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_REGISTRO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
-														Fecha Registro
-														<?= ($_GET['sort'] ?? '') === 'FECHA_REGISTRO' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
-													</a>
-												</th>
-												<th>
-													<a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_ROL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">
-														Rol
-														<?= ($_GET['sort'] ?? '') === 'NOMBRE_ROL' ? ($_GET['order'] === 'asc' ? '▲' : '▼') : '' ?>
-													</a>
-												</th>
-												<?php if ($roleName === 'Administrador'): ?>
-													<th class="text-end min-w-100px">Acciones</th>
-												<?php endif; ?>
-											</tr>
-											</thead>
-											<tbody class="text-gray-600 fw-bold">
-												<h1 class="text-center">Listado de Usuarios</h1><br><br>
-
-												<?php if (session()->getFlashdata('success')): ?>
-													<script>
-														toastr.success('<?= session()->getFlashdata('success'); ?>');
-													</script>
-												<?php endif; ?>
-
-												<?php if (!empty($usuarios) && is_array($usuarios)): ?>
-													<?php foreach ($usuarios as $usuario): ?>
-														<tr>
-															<td>
-																<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
-																<span class="<?= !is_null($usuario['FECHA_BAJA']) ? 'text-danger' : '' ?>">
-																	<?= esc($usuario['NOMBRE_USUARIO']) ?>
-																</span>
-															</td>
-															<td><?= esc($usuario['EMAIL']) ?></td>
-															<td><?= substr($usuario['CONTRASEÑA_HASH'], 0, 10) . '...'; ?></td>
-															<td><?= esc($usuario['FECHA_REGISTRO']) ?></td>
-															<td><?= isset($usuario['NOMBRE_ROL']) ? esc($usuario['NOMBRE_ROL']) : 'Sin Rol' ?></td>
-															<td class="text-end">
-																<?php if ($roleName === 'Administrador'): ?>
-																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-																		Modificar
-																		<span class="svg-icon svg-icon-5 m-0">
-																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																				<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																			</svg>
-																		</span>
-																	</a>
-																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																		<div class="menu-item px-3">
-																			<a href="<?= base_url('usuarios/save/' . $usuario['ID_USUARIO']) ?>" class="menu-link px-3">Editar</a>
-																		</div>
-																		<div class="menu-item px-3">
-																			<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
-																				<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
-																			</a>
-																		</div>
-																	</div>
-																<?php endif; ?>
-															</td>
-														</tr>
-													<?php endforeach; ?>
-												<?php else: ?>
-													<tr>
-														<td colspan="6" class="text-center">No hay usuarios registrados.</td>
-													</tr>
-												<?php endif; ?>
-											</tbody>
-										</table>
-
-										<!--end::Table-->
-
-										<!-- -----------Paginación------------ -->
-										<div class="mt-4">
-											<?= $pager->links('default', 'custom_pagination') ?>
-										</div>
-									</div>
-
-									<!--end::Card body-->
-								</div>
-								<!--end::Card-->
+						<div class="card card-flush">
+							<div class="card-header">
+								<h3 class="card-title">Filtros de Búsqueda</h3>
 							</div>
-							<!--end::Container-->
+							<div class="card-body">
+								<form id="filtrosForm" class="row g-3">
+									<!-- Rol -->
+									<div class="col-md-4">
+										<label for="rolFiltro" class="form-label">Rol:</label>
+										<select id="rolFiltro" name="NOMBRE_ROL" class="form-select">
+											<option value="">Seleccionar rol</option>
+											<option value="ADMINISTRADOR">Administrador</option>
+											<option value="VISITANTE">Visitante</option>
+										</select>
+									</div>
+
+									<!-- Nombre de Usuario -->
+									<div class="col-md-4">
+										<label for="nombreFiltro" class="form-label">Nombre de Usuario:</label>
+										<select id="nombreFiltro" name="NOMBRE_USUARIO" class="form-select">
+											<option value="">Seleccionar usuario</option>
+										</select>
+									</div>
+
+									<!-- Email -->
+									<div class="col-md-4">
+										<label for="emailFiltro" class="form-label">Email:</label>
+										<input type="text" id="emailFiltro" name="EMAIL" class="form-control" placeholder="Correo electrónico">
+									</div>
+									
+									<!-- Estado -->
+									<div class="col-md-4">
+										<label for="estadoFiltro" class="form-label">Estado:</label>
+										<select id="estadoFiltro" name="estado" class="form-select">
+											<option value="">Todos</option>
+											<option value="activo">Activo</option>
+											<option value="baja">Baja</option>
+										</select>
+									</div>
+
+									<!-- Botón de Filtrar -->
+									<div class="col-md-12 text-end">
+										<button type="submit" class="btn btn-primary">
+											<i class="fas fa-search"></i> Filtrar
+										</button>
+									</div>
+								</form>
+							</div>
 						</div>
-						<!--end::Post-->
+
+						<!-- Tabla de Usuarios -->
+						<div class="card mt-4">
+							<div class="card-body">
+								<table id="tablaUsuarios" class="table table-striped align-middle">
+									<thead class="table-dark">
+										<tr>
+											<th>Nombre</th>
+											<th>Email</th>
+											<th>Rol</th>
+											<th>Fecha Registro</th>
+											<th>Estado</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Aquí se llenarán los datos de la tabla -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+<!-- Modal de Metronic para mostrar el mensaje -->
+<div class="modal fade" id="bajaModal" tabindex="-1" role="dialog" aria-labelledby="bajaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bajaModalLabel">Estado del Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalMessage">
+                <!-- Aquí se mostrará el mensaje dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -669,32 +501,6 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 	<!--end::Page-->
 	</div>
-	<!--end::Root-->
-	<!--begin::Drawers-->
-	<!--begin::Activities drawer-->
-
-	<!--end::Activities drawer-->
-	<!--begin::Chat drawer-->
-	<!--end::Exolore drawer-->
-	<!--end::Drawers-->
-	<!--begin::Modals-->
-
-	<!--end::Modal - Invite Friend-->
-
-	<!--end::Modal - Create App-->
-	<!--begin::Modal - Upgrade plan-->
-	<div class="modal fade" id="kt_modal_upgrade_plan" tabindex="-1" aria-hidden="true">
-		<!--begin::Modal dialog-->
-		<div class="modal-dialog modal-xl">
-			<!--begin::Modal content-->
-
-			<!--end::Modal content-->
-		</div>
-		<!--end::Modal dialog-->
-	</div>
-	<!--end::Modal - Upgrade plan-->
-	<!--end::Modals-->
-	<!--begin::Scrolltop-->
 	<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
 		<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 		<span class="svg-icon">
@@ -714,7 +520,6 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="../assets/plugins/global/plugins.bundle.js"></script>
 	<script src="../assets/js/scripts.bundle.js"></script>
-	<script src="../assets/js/graficos.js"></script>
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Page Vendors Javascript(used by this page)-->
 	<script src="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
@@ -728,11 +533,123 @@ License: For each use you must have a valid license purchased only from above li
 	<!--end::Javascript-->
 	<!-- Incluir Chart.js desde un CDN -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 	<!-- libreria para los rgaficos -->
 	<script>
+       $(document).ready(function() {
+    let table = $('#tablaUsuarios').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "<?= site_url('usuarios/getUsuariosJson') ?>",
+            "type": "GET",
+            "data": function(d) {
+                // Enviar los filtros al backend
+                d.NOMBRE_USUARIO = $('#nombreFiltro').val();
+                d.EMAIL = $('#emailFiltro').val();
+                d.NOMBRE_ROL = $('#rolFiltro').val();  // Asegúrate de que este valor esté siendo enviado correctamente
+                d.estado = $('#estadoFiltro').val();
+            }
+        },
+        "columns": [
+            { "data": "NOMBRE_USUARIO" },
+            { "data": "EMAIL" },
+            { "data": "NOMBRE_ROL" },
+            { "data": "FECHA_REGISTRO" },
+            {
+                "data": "FECHA_BAJA",
+                "render": function(data) {
+                    return data ? '<span style="color:red;">Inactivo</span>' : '<span style="color:green;">Activo</span>';
+                }
+            },
+            {
+                "data": "ID_USUARIO",
+                "render": function(data) {
+                    return `<a href="<?= site_url('usuarios/edit/') ?>${data}" class="btn btn-primary">Editar</a>
+                            <a href="javascript:void(0);" class="btn btn-danger dar-baja" data-id="${data}">Dar de Baja</a>`;
+                }
+            }
+        ]
+    });
 
-	</script>
+    // Recargar la tabla cuando se envíen los filtros
+    $('#filtrosForm').on('submit', function(e) {
+        e.preventDefault();
+        table.ajax.reload();  // Recargamos la tabla con los filtros
+    });
 
+    // Filtrar usuarios por rol
+    $('#rolFiltro').on('change', function() {
+        let rolSeleccionado = $(this).val();
+
+        // Limpiar y agregar opción por defecto
+        $('#nombreFiltro').html('<option value="">Seleccionar usuario</option>');
+
+        if (rolSeleccionado) {
+            $.ajax({
+                url: "<?= site_url('usuarios/getUsuariosPorRol') ?>",  // Nueva ruta en el controlador
+                type: "GET",
+                data: { rol: rolSeleccionado },
+                dataType: "json",
+                success: function(data) {
+                    $.each(data, function(index, usuario) {
+                        $('#nombreFiltro').append(`<option value="${usuario.NOMBRE_USUARIO}">${usuario.NOMBRE_USUARIO}</option>`);
+                    });
+                }
+            });
+        }
+    });
+
+    // Manejar el clic en el botón "Dar de Baja"
+    $('#tablaUsuarios').on('click', '.dar-baja', function(e) {
+        e.preventDefault();  // Prevenir la acción por defecto del enlace
+        const userId = $(this).data('id');  // Obtener el ID del usuario desde el atributo 'data-id'
+
+        // Realizar la solicitud AJAX para dar de baja
+        $.ajax({
+            url: `<?= site_url('usuarios/baja/') ?>${userId}`,
+            type: 'POST',  // Asegúrate de que el tipo de solicitud sea POST
+            success: function(response) {
+                if (response.success) {
+                    // Mostrar el mensaje en el modal
+                    $('#modalMessage').html(response.message); // Coloca el mensaje en el modal
+
+                    // Mostrar el modal
+                    $('#bajaModal').modal('show');
+
+                    // Actualizar la columna FECHA_BAJA en la fila de la tabla
+                    let row = table.row($(e.target).closest('tr'));
+                    let data = row.data();
+
+                    // Cambiar el estado de la columna FECHA_BAJA según la respuesta
+                    if (response.message.includes('dado de baja')) {
+                        // Aquí deberías actualizar la celda de FECHA_BAJA, indicando que ahora está inactivo
+                        data['FECHA_BAJA'] = response.fecha_baja;  // Si el mensaje indica baja, se actualiza
+                    } else {
+                        // Si ya estaba dado de baja, restaurar al estado activo (sin fecha de baja)
+                        data['FECHA_BAJA'] = null;
+                    }
+
+                    // Actualizar la fila en la tabla
+                    row.invalidate().draw();
+                } else {
+                    // Mostrar mensaje de error
+                    $('#modalMessage').html('Hubo un error al intentar dar de baja al usuario.');
+                    $('#bajaModal').modal('show');
+                }
+            },
+            error: function() {
+                $('#modalMessage').html('Hubo un error al intentar dar de baja al usuario.');
+                $('#bajaModal').modal('show');
+            }
+        });
+    });
+});
+
+    
+    </script>
 
 </body>
 <!--end::Body-->

@@ -52,6 +52,16 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
+	<!-- suapy -->
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+
+
+		
+	
+
 	<style>
 	.aside-logo {
     display: flex; /* Alinea los elementos horizontalmente */
@@ -669,55 +679,65 @@ License: For each use you must have a valid license purchased only from above li
 								<!--end::Row-->
 								<!--begin::Row-->
 								<div class="container">
-								<!-- Título de la página-------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-								<div class="row mb-5">
-									<div class="col-12 text-center">
-										<h2>Piscifactoría</h2>
-									</div>
-								</div>
-
-								<!-- Fila con los 4 gráficos -->
-								<div class="row">
-									<!-- Gráfico 1:  producion Peces -->
-									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom">
+								<!-- Título de la página char-------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+								<div class="row" id="chart-container">
+									<div class="col-md-6 col-xl-6 draggable">
+										<div class="card card-custom"style="max-height: 450px;">
 											<div class="card-body">
 												<h5 class="card-title">Producción de Peces</h5>
 												<canvas id="chart1"></canvas>
 											</div>
-										</div>
+										</div><br>
 									</div>
 
-									<!-- Gráfico 2:   Alimento -->
-									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom">
+									<div class="col-md-6 col-xl-6 draggable">
+										<div class="card card-custom"style="max-height: 450px;">
 											<div class="card-body">
 												<h5 class="card-title">Alimento</h5>
 												<canvas id="chart2"></canvas>
 											</div>
-										</div>
+										</div><br>
 									</div>
 
-									<!-- Gráfico 3:   Peces  -->
-									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom" style="max-height: 300px;">
+									<div class="col-md-6 col-xl-6 ">
+										<div class="card card-custom" style="max-height: 450px;">
 											<div class="card-body">
 												<h5 class="card-title">Número de Peces</h5>
-												<canvas id="chart3"></canvas>
+												<canvas id="chart3" style="max-width: 100%; max-height: 250px;"></canvas>
 											</div>
-										</div>
+										</div><br>
 									</div>
 
-									<!-- Gráfico 4: Ventas  de Pescado -->
-									<div class="col-md-6 col-xl-3">
-										<div class="card card-custom" style="max-height: 300px;">
+									<div class="col-md-6 col-xl-6 ">
+										<div class="card card-custom" style="max-height: 450px;">
 											<div class="card-body">
 												<h5 class="card-title">Ventas Mensuales</h5>
-												<canvas id="chart4"></canvas>
+												<canvas id="chart4" style="max-width: 100%; max-height: 250px;"></canvas>
 											</div>
-										</div>
+										</div><br>
 									</div>
 								</div>
+
+
+
+								<script>
+									document.addEventListener("DOMContentLoaded", function () {
+										// Activar SortableJS en el contenedor
+										var el = document.getElementById('chart-container');
+										var sortable = new Sortable(el, {
+											animation: 150, // Suaviza el movimiento
+											ghostClass: 'sortable-ghost', // Clase para los elementos arrastrados
+											dragClass: 'sortable-drag', // Clase para los elementos cuando son arrastrados
+											onStart(evt) {
+											},
+											onEnd(evt) {
+											}
+										});
+									});
+								</script>
+
+
+
 							</div><br>
 							<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 

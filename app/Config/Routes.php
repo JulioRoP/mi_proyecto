@@ -19,8 +19,10 @@ $routes->get('usuarios/save/(:num)', 'UsuarioController::saveUsuario/$1',['filte
 $routes->post('usuarios/save', 'UsuarioController::saveUsuario',['filter' => 'filtroAcceso']); // Guardar nuevo usuario (POST)
 $routes->post('usuarios/save/(:num)', 'UsuarioController::saveUsuario/$1',['filter' => 'filtroAcceso']); // Actualizar usuario (POST)
 $routes->get('usuarios/delete/(:num)', 'UsuarioController::delete/$1',['filter' => 'filtroAcceso']); // Eliminar usuario
-$routes->get('usuarios/baja/(:num)', 'UsuarioController::baja/$1',['filter' => 'filtroAcceso']); // Dar de baja usuario
+$routes->post('usuarios/baja/(:num)', 'UsuarioController::baja/$1',['filter' => 'filtroAcceso']); // Dar de baja usuario
 $routes->get('usuarios/exportarCSV', 'UsuarioController::exportarCSV');//exportar usuario
+$routes->get('usuarios/getUsuariosJson', 'UsuarioController::getUsuariosJson', ['filter' => 'filtroAcceso']); // Ruta para la llamada AJAX
+$routes->get('usuarios/getUsuariosPorRol', 'UsuarioController::getUsuariosPorRol');
 
 
 // ----------------- Rutas de Peces ---------------------

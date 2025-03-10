@@ -148,38 +148,28 @@ class UsuarioController extends BaseController
     }
 
     public function baja($id)
-{
-    // Cargar el modelo de usuario
-    $usuarioModel = new UsuarioModel();
+    {
+        // Cargar el modelo de usuario
+        $usuarioModel = new UsuarioModel();
 
-    // Obtener el usuario por el ID
-    $usuario = $usuarioModel->find($id);
+        // Obtener el usuario por el ID
+        $usuario = $usuarioModel->find($id);
 
-    if (is_null($usuario['FECHA_BAJA'])) {
-        // Si no tiene fecha de baja, poner la fecha actual de baja
-        $fechaBaja = date('Y-m-d');
-        $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
+        if (is_null($usuario['FECHA_BAJA'])) {
+            // Si no tiene fecha de baja, poner la fecha actual de baja
+            $fechaBaja = date('Y-m-d');
+            $usuarioModel->update($id, ['FECHA_BAJA' => $fechaBaja]);
 
-        // Responder con el éxito y la fecha de baja
-        return $this->response->setJSON([
-            'success' => true,
-            'message' => 'Usuario dado de baja correctamente.',
-            'fecha_baja' => $fechaBaja
-        ]);
-    } else {
-        // Si ya tiene fecha de baja, eliminarla (dar de alta)
-        $usuarioModel->update($id, ['FECHA_BAJA' => null]);
+            // Mensaje de éxito al dar de baja
+            return redirect()->to('/usuarios')->with('success', 'Usuario dado de baja correctamente.');
+        } else {
+            // Si ya tiene fecha de baja, eliminarla (dar de alta)
+            $usuarioModel->update($id, ['FECHA_BAJA' => null]);
 
-        // Responder con el éxito
-        return $this->response->setJSON([
-            'success' => true,
-            'message' => 'Usuario dado de alta correctamente.',
-            'fecha_baja' => null
-        ]);
+            // Mensaje de éxito al dar de alta
+            return redirect()->to('/usuarios')->with('success', 'Usuario dado de alta correctamente.');
+        }
     }
-}
-
-
 
     public function exportarCSV()
 {
@@ -257,126 +247,6 @@ class UsuarioController extends BaseController
                             ->setHeader('Pragma', 'no-cache')
                             ->setHeader('Expires', '0');
 }
-
-
-// Método en el controlador UsuarioController
-public function getUsuariosJson()
-{
-    // Obtener los filtros enviados desde el frontend
-    $nombreUsuario = $this->request->getVar('NOMBRE_USUARIO');
-    $email = $this->request->getVar('EMAIL');
-    $rol = $this->request->getVar('NOMBRE_ROL');
-    $estado = $this->request->getVar('estado');
-
-    // Cargar el modelo de usuarios
-    $usuarioModel = new UsuarioModel();
-
-    // Realizar la consulta base
-    $usuarioModel->select('USUARIOS.*, ROLES.NOMBRE_ROL')  // Selecciona la columna NOMBRE_ROL de la tabla ROLES
-                 ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left');  // Realiza el JOIN con la tabla ROLES
-
-    // Aplicar los filtros de búsqueda si existen
-    if ($nombreUsuario) {
-        $usuarioModel->like('USUARIOS.NOMBRE_USUARIO', $nombreUsuario);
-    }
-    if ($email) {
-        $usuarioModel->like('USUARIOS.EMAIL', $email);
-    }
-    if ($rol) {
-        $usuarioModel->where('ROLES.NOMBRE_ROL', $rol);  // Filtro por nombre de rol
-    }
-    if ($estado) {
-        if ($estado == 'activo') {
-            $usuarioModel->where('USUARIOS.FECHA_BAJA', NULL);  // Activos
-        } elseif ($estado == 'baja') {
-            $usuarioModel->where('USUARIOS.FECHA_BAJA IS NOT NULL');  // Inactivos
-        }
-    }
-
-    // Manejo de la ordenación si se aplica
-    $order = $this->request->getVar('order');  // DataTables envia un array de ordenación
-    if ($order && isset($order[0])) {
-        $orderColumn = $order[0]['column'];  // Obtén el índice de la columna
-        $orderDir = $order[0]['dir'];  // Obtén la dirección de la ordenación (asc/desc)
-
-        $columns = ['NOMBRE_USUARIO', 'EMAIL', 'NOMBRE_ROL', 'FECHA_REGISTRO', 'FECHA_BAJA'];
-        if (isset($columns[$orderColumn])) {
-            $usuarioModel->orderBy($columns[$orderColumn], $orderDir);
-        }
-    }
-
-
-    // Paginación
-    $start = $this->request->getVar('start');
-    $length = $this->request->getVar('length');
-    $usuarios = $usuarioModel->findAll($length, $start);
-
-    // Contar el total de usuarios (sin filtros para paginación)
-    $totalUsuarios = $usuarioModel->countAllResults(false);
-
-    // Preparar los datos para la respuesta JSON
-    $data = [];
-    foreach ($usuarios as $usuario) {
-        $data[] = [
-            'NOMBRE_USUARIO' => $usuario['NOMBRE_USUARIO'],
-            'EMAIL' => $usuario['EMAIL'],
-            'NOMBRE_ROL' => $usuario['NOMBRE_ROL'],
-            'FECHA_REGISTRO' => $usuario['FECHA_REGISTRO'],
-            'FECHA_BAJA' => $usuario['FECHA_BAJA'],
-            'ID_USUARIO' => $usuario['ID_USUARIO']
-        ];
-    }
-
-    // Devolver los resultados en formato JSON
-    return $this->response->setJSON([
-        'draw' => $this->request->getVar('draw'),
-        'recordsTotal' => $totalUsuarios,
-        'recordsFiltered' => count($data),
-        'data' => $data
-    ]);
-}
-
-
-
-public function getUsuarios()
-    {
-        // Obtener los filtros del formulario
-        $nombreUsuario = $this->request->getVar('NOMBRE_USUARIO');
-        $email = $this->request->getVar('EMAIL');
-        $rol = $this->request->getVar('NOMBRE_ROL');
-        $estado = $this->request->getVar('estado');
-        $usuarioSeleccionado = $this->request->getVar('NOMBRE_USUARIO_SELECCIONADO');
-        
-        // Cargar el modelo de usuarios
-        $usuarioModel = new UsuarioModel();
-
-        // Filtramos los usuarios según los criterios recibidos
-        $usuarios = $usuarioModel->select('ID_USUARIO, NOMBRE_USUARIO, EMAIL, NOMBRE_ROL')
-                                ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
-                                ->like('NOMBRE_USUARIO', $nombreUsuario)
-                                ->like('EMAIL', $email)
-                                ->like('ROLES.NOMBRE_ROL', $rol)
-                                ->where('USUARIOS.ESTADO', $estado)
-                                ->where('USUARIOS.ID_USUARIO', $usuarioSeleccionado ? $usuarioSeleccionado : 'IS NOT NULL')
-                                ->findAll();
-
-        // Devolver los usuarios filtrados en formato JSON
-        return $this->response->setJSON($usuarios);
-    }
-
-    public function getUsuariosPorRol()
-    {
-        $rol = $this->request->getVar('rol');
-
-        $usuarioModel = new UsuarioModel();
-        $usuarios = $usuarioModel->select('NOMBRE_USUARIO')
-                                ->join('ROLES', 'USUARIOS.ID_ROL = ROLES.ID_ROL', 'left')
-                                ->where('ROLES.NOMBRE_ROL', $rol)
-                                ->findAll();
-
-        return $this->response->setJSON($usuarios);
-    }
-
 
 
 

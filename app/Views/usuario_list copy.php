@@ -52,42 +52,6 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
-	<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
-
-<!-- jQuery y DataTables JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-
-	<style>
-	.aside-logo {
-    display: flex; /* Alinea los elementos horizontalmente */
-    justify-content: flex-start; /* Alinea los elementos al principio */
-    align-items: center; /* Alinea verticalmente el logo y el botón */
-    padding-top: 50px; /* Ajusta el espacio superior */
-    min-height: 100px; /* Asegura que el contenedor tenga suficiente altura */
-}
-
-.logo-custom {
-    height: 200px; /* Ajusta el tamaño del logo */
-    width: auto; /* Mantiene la proporción */
-    margin-right: 0px; /* Acerca el logo al icono */
-}
-
-#kt_aside_toggle {
-    display: flex; /* Centra el icono dentro del contenedor */
-    justify-content: center; /* Alinea el icono horizontalmente */
-    align-items: center; /* Alinea el icono verticalmente */
-    padding: 15px; /* Aumenta el área del botón */
-    cursor: pointer; /* Hace que el botón sea clickeable */
-    font-size: 30px; /* Aumenta el tamaño del icono */
-}
-
-#kt_aside_toggle .svg-icon {
-    width: 40px; /* Aumenta el tamaño del icono */
-    height: 40px; /* Aumenta el tamaño del icono */
-}
-	</style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -104,11 +68,10 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="http://localhost/mi_proyecto/public/">
-						<img alt="Logo" src="../assets/media/logos/logo-1-dark.png" class="logo-custom" />
+						<img alt="Logo" src="../assets/media/logos/logo-1-dark.svg" class="h-25px logo" />
 					</a>
 					<!--end::Logo-->
-					
-					<!--begin::Aside toggler (botón)-->
+					<!--begin::Aside toggler-->
 					<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
 						<span class="svg-icon svg-icon-1 rotate-180">
@@ -136,6 +99,7 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 						</div>
 					</div>						
+					<!--begin::Menu-->
 					<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 
 						<div class="menu-item">
@@ -158,19 +122,17 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-title">Personas</span>
 								<span class="menu-arrow"></span>
 							</span>
-							<div class="menu-sub menu-sub-accordion menu-active-bg show">
-								<?php if ($roleName === 'Administrador'): ?>
+							<div class="menu-sub menu-sub-accordion menu-active-bg">
 								<div class="menu-item">
-									<a class="menu-link" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
+									<a class="menu-link active" href="http://localhost/mi_proyecto/public/usuarios?NOMBRE_USUARIO=&EMAIL=&FECHA_REGISTRO=&ROL=&estado=activo">
 										<span class="menu-bullet">
 											<span class="bullet bullet-dot"></span>
 										</span>
 										<span class="menu-title">Usuarios</span>
 									</a>
 								</div>
-								<?php endif; ?>
 								<div class="menu-item">
-									<a class="menu-link active" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
+									<a class="menu-link" href="http://localhost/mi_proyecto/public/proveedores?NOMBRE_PROVEEDOR=&TIPO_PRODUCTO=&TELEFONO=&EMAIL=&estado=activo">
 										<span class="menu-bullet">
 											<span class="bullet bullet-dot"></span>
 										</span>
@@ -200,7 +162,6 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="menu-arrow"></span>
 							</span>
 							<div class="menu-sub menu-sub-accordion menu-active-bg">
-								<?php if ($roleName === 'Administrador'): ?>
 								<div class="menu-item">
 									<a class="menu-link" href="../../demo1/dist/pages/profile/projects.html">
 										<span class="menu-bullet">
@@ -209,7 +170,6 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Pedidos</span>
 									</a>
 								</div>
-								<?php endif; ?>
 								<div class="menu-item">
 									<a class="menu-link" href="http://localhost/mi_proyecto/public/peces?ESPECIE=&FECHA_NACIMIENTO=&PESO=&LONGITUD=&TIPO_AGUA=&estado=activo">
 										<span class="menu-bullet">
@@ -220,7 +180,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 							</div>
 						</div>
-						<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+						<div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
 							<span class="menu-link">
 								<span class="menu-icon">
 									<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
@@ -315,7 +275,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista Proveedores</h1>
+									<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Lista Usuarios</h1>
 									<!--end::Title-->
 									<!--begin::Separator-->
 									<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -324,7 +284,7 @@ License: For each use you must have a valid license purchased only from above li
 									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 										<!--begin::Item-->
 										<li class="breadcrumb-item text-muted">
-											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Inicio</a>
+											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
@@ -349,7 +309,7 @@ License: For each use you must have a valid license purchased only from above li
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
-										<li class="breadcrumb-item text-dark">Lista Proveedores</li>
+										<li class="breadcrumb-item text-dark">Lista Usuarios</li>
 										<!--end::Item-->
 									</ul>
 									<!--end::Breadcrumb-->
@@ -411,57 +371,51 @@ License: For each use you must have a valid license purchased only from above li
 														<!--begin::Input group-->
 														<div class="mb-10">
 
-                                                        <form method="GET" action="<?= base_url('proveedores') ?>" class="mb-3">
-                                                            <div class="container">
-                                                                <!-- Campo Nombre del Proveedor -->
-                                                                <div class="mb-3">
-                                                                    <input type="text" name="NOMBRE_PROVEEDOR" class="form-control" placeholder="Nombre del Proveedor" value="<?= $nombreProveedorBusqueda ?>">
-                                                                </div>
+															<form method="GET" action="<?= base_url('usuarios') ?>" class="mb-3">
+																<div class="container">
+																	<!-- Campo Especie -->
+																	<div class="mb-3">															
+																		<input type="text" name="NOMBRE_USUARIO" class="form-control" placeholder="Nombre" value="<?= $nombreUsuarioBusqueda ?>">
+																	</div>
 
-                                                                <!-- Campo Tipo de Producto -->
-                                                                <div class="mb-3">
-                                                                    <input type="text" name="TIPO_PRODUCTO" class="form-control" placeholder="Tipo de Producto" value="<?= $tipoProductoBusqueda ?>">
-                                                                </div>
+																	<!-- Campo Fecha de Nacimiento -->
+																	<div class="mb-3">
+																		<input type="text" name="EMAIL" class="form-control" placeholder="Email" value="<?= isset($emailUsuarioBusqueda) ? $emailUsuarioBusqueda : '' ?>">
+																	</div>
 
-                                                                <!-- Campo Teléfono -->
-                                                                <div class="mb-3">
-                                                                    <input type="text" name="TELEFONO" class="form-control" placeholder="Teléfono" value="<?= $telefonoBusqueda ?>">
-                                                                </div>
+																	<!-- Campo Peso -->
+																	<div class="mb-3">
+																		<input type="date" step="any" name="FECHA_REGISTRO" class="form-control" placeholder="Fecha de Registro" value="<?= isset($fechaRegistroBusqueda) ? $fechaRegistroBusqueda : '' ?>">
+																	</div>
 
-                                                                <!-- Campo Email -->
-                                                                <div class="mb-3">
-                                                                    <input type="text" name="EMAIL" class="form-control" placeholder="Email" value="<?= $emailBusqueda ?>">
-                                                                </div>
-
-                                                                <!-- Select para Estado -->
-                                                                <div class="mb-3">
-                                                                    <select name="estado" class="form-control" onchange="this.form.submit()">
-                                                                        <option value="" disabled selected>Estado</option>
-                                                                        <option value="activo" <?= $estadoBusqueda == 'activo' ? 'selected' : '' ?>>Activo</option>
-                                                                        <option value="baja" <?= $estadoBusqueda == 'baja' ? 'selected' : '' ?>>De baja</option>
-                                                                        <option value="todos" <?= $estadoBusqueda == 'todos' ? 'selected' : '' ?>>Todos</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <!-- Botón de Buscar -->
-                                                                <div class="mb-3">
-                                                                    <button type="submit" class="btn btn-primary">Buscar</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
+																	<!-- Campo Longitud -->
+																	<!-- Select para Rol -->
+																	<div class="mb-3">
+																		<select name="ROL" class="form-control">
+																			<option value="" disabled selected>Selecciona el Rol</option>
+																			<option value="1" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '1' ? 'selected' : '' ?>>Administrador</option>
+																			<option value="2" <?= isset($rolUsuarioBusqueda) && $rolUsuarioBusqueda == '2' ? 'selected' : '' ?>>Visitante</option>
+																			<!-- Puedes añadir más opciones si tienes otros roles -->
+																		</select>
+																	</div>
 
 
+																	<!-- Select para Estado -->
+																	<div class="mb-3">
+																		<select name="estado" class="form-control" onchange="this.form.submit()">
+																			<option value="" disabled selected>Estado</option>
+																			<option value="activo" <?= isset($estadoBusqueda) && $estadoBusqueda == 'activo' ? 'selected' : '' ?>>Activo</option>
+																			<option value="baja" <?= isset($estadoBusqueda) && $estadoBusqueda == 'baja' ? 'selected' : '' ?>>De baja</option>
+																			<option value="todos" <?= isset($estadoBusqueda) && $estadoBusqueda == 'todos' ? 'selected' : '' ?>>Todos</option>
+																		</select>
+																	</div>
 
-
-
-
-
-
-
-
-
-
-
+																	<!-- Botón de Buscar -->
+																	<div class="mb-3">
+																		<button type="submit" class="btn btn-primary">Buscar</button>
+																	</div>
+																</div>
+															</form>
 														</div>
 
 													</div>
@@ -470,7 +424,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Menu 1-->
 												<!--end::Filter-->
 												<!--begin::Export-->
-												<a href="<?= site_url('proveedores/exportar') ?>" class="btn btn-light-primary me-3">
+												<a href="<?= base_url('usuarios/exportarCSV') ?>" class="btn btn-light-primary me-3">
 													<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 													<span class="svg-icon svg-icon-2">
 														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -481,20 +435,18 @@ License: For each use you must have a valid license purchased only from above li
 													</span>
 													<!--end::Svg Icon-->Exportar
 												</a>
-
 												<!--end::Export-->
 												<!--begin::Add user-->
 												<?php if ($roleName === 'Administrador'): ?>
-													<a href="<?= base_url('proveedores/save') ?>">
+													<a href="<?= base_url('usuarios/save') ?>">
 														<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-															<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 															<span class="svg-icon svg-icon-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																	<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
 																	<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
 																</svg>
 															</span>
-															<!--end::Svg Icon-->Añadir Proveedor
+															Añadir Usuario
 														</button>
 													</a>
 												<?php endif; ?>
@@ -523,91 +475,81 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Card header-->
 									<!--begin::Card body-->
 									<div class="card-body pt-0">
-    <!--begin::Table-->
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-        <thead>
-		<thead>
-    <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-        <th class="min-w-125px">Proveedor</th>
-        <th class="min-w-125px">Productos</th>
-        <th class="min-w-125px">Teléfono</th>
-        <th class="min-w-125px">Email</th>
-        <?php if ($roleName === 'Administrador'): ?>
-            <th class="text-end min-w-100px">Acciones</th>
-        <?php endif; ?>
-    </tr>
-</thead>
+										<!--begin::Table-->
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+											<!--begin::Table head-->
+											<thead>
+												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_USUARIO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Nombre</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'EMAIL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Email</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'CONTRASEÑA_HASH', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Contraseña</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'FECHA_REGISTRO', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Fecha Registro</a></th>
+													<th><a href="<?= base_url('usuarios?' . http_build_query(array_merge($_GET, ['sort' => 'NOMBRE_ROL', 'order' => ($_GET['order'] ?? 'asc') === 'asc' ? 'desc' : 'asc']))) ?>">Rol</a></th>
+													<th class="text-end min-w-100px">Acciones</th>
+												</tr>
+											</thead>
+											<tbody class="text-gray-600 fw-bold">
+												<h1 class="text-center">Listado de Usuarios</h1><br><br>
 
-        </thead>
-        <tbody class="text-gray-600 fw-bold">
-            <h1 class="text-center">Listado de Proveedores</h1><br><br>
+												<?php if (session()->getFlashdata('success')): ?>
+													<script>
+														toastr.success('<?= session()->getFlashdata('success'); ?>');
+													</script>
+												<?php endif; ?>
 
-            <?php if (session()->getFlashdata('success')): ?>
-                <script>
-                    toastr.success('<?= session()->getFlashdata('success'); ?>');
-                </script>
-            <?php endif; ?>
+												<?php if (!empty($usuarios) && is_array($usuarios)): ?>
+													<?php foreach ($usuarios as $usuario): ?>
+														<tr>
+															<td>
+																<!-- Si FECHA_BAJA no es NULL, se aplica la clase 'text-danger' para el color rojo -->
+																<span class="<?= !is_null($usuario['FECHA_BAJA']) ? 'text-danger' : '' ?>">
+																	<?= esc($usuario['NOMBRE_USUARIO']) ?>
+																</span>
+															</td>
+															<td><?= esc($usuario['EMAIL']) ?></td>
+															<td><?= substr($usuario['CONTRASEÑA_HASH'], 0, 10) . '...'; ?></td>
+															<td><?= esc($usuario['FECHA_REGISTRO']) ?></td>
+															<td><?= isset($usuario['NOMBRE_ROL']) ? esc($usuario['NOMBRE_ROL']) : 'Sin Rol' ?></td>
+															<td class="text-end">
+																<?php if ($roleName === 'Administrador'): ?>
+																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+																		Modificar
+																		<span class="svg-icon svg-icon-5 m-0">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																			</svg>
+																		</span>
+																	</a>
+																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('usuarios/save/' . $usuario['ID_USUARIO']) ?>" class="menu-link px-3">Editar</a>
+																		</div>
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('usuarios/baja/' . esc($usuario['ID_USUARIO'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($usuario['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este usuario?');">
+																				<?= is_null($usuario['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																			</a>
+																		</div>
+																	</div>
+																<?php endif; ?>
+															</td>
+														</tr>
+													<?php endforeach; ?>
+												<?php else: ?>
+													<tr>
+														<td colspan="6" class="text-center">No hay usuarios registrados.</td>
+													</tr>
+												<?php endif; ?>
+											</tbody>
+										</table>
 
-            <?php if (!empty($proveedores) && is_array($proveedores)): ?>
-                <?php foreach ($proveedores as $proveedor): ?>
-                    <tr>
-                        <td>
-                            <span class="<?= !is_null($proveedor['FECHA_BAJA']) ? 'text-danger' : '' ?>">
-                                <?= esc($proveedor['NOMBRE_PROVEEDOR']) ?>
-                            </span>
-                        </td>
-                        <td><?= esc($proveedor['TIPO_PRODUCTO']) ?></td>
-                        <td><?= esc($proveedor['TELEFONO']) ?></td>
-                        <td><?= esc($proveedor['EMAIL']) ?></td>
-                        <td class="text-end">
-                            <?php if ($roleName === 'Administrador'): ?>
-                                <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    Modificar
-                                </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a href="<?= base_url('proveedores/save/' . $proveedor['ID_PROVEEDOR']) ?>" class="menu-link px-3">Editar</a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a href="<?= base_url('proveedores/baja/' . esc($proveedor['ID_PROVEEDOR'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($proveedor['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este proveedor?');">
-                                            <?= is_null($proveedor['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="6" class="text-center">No hay proveedores registrados.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <!--end::Table-->
+										<!--end::Table-->
 
-    <!-- -----------Paginación------------ -->
-    <div class="mt-4">
-        <?= $pager->links('default', 'custom_pagination') ?>
-    </div>
-</div>
+										<!-- -----------Paginación------------ -->
+										<div class="mt-4">
+											<?= $pager->links('default', 'custom_pagination') ?>
+										</div>
+									</div>
 
-<script> 
-$(document).ready(function() {
-    $('#kt_table_users').DataTable({
-        "order": [[0, 'asc']],  // Ordena por la primera columna (Proveedor) de forma ascendente al cargar la tabla.
-        "processing": true,
-        "serverSide": true,  // Habilitar para carga de datos en el servidor
-        "ajax": {
-            "url": "<?= base_url('proveedores/get_data') ?>",  // Ruta para cargar los datos del servidor
-            "type": "GET"
-        },
-        "pageLength": 10  // Número de filas por página
-    });
-});
-
-</script>
 									<!--end::Card body-->
 								</div>
 								<!--end::Card-->
@@ -629,19 +571,19 @@ $(document).ready(function() {
 			<!--begin::Copyright-->
 			<div class="text-dark order-2 order-md-1">
 				<span class="text-muted fw-bold me-1">2021©</span>
-				<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Proveedores</a>
+				<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 			</div>
 			<!--end::Copyright-->
 			<!--begin::Menu-->
 			<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 				<li class="menu-item">
-					<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">Sobre Nosotros</a>
+					<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
 				</li>
 				<li class="menu-item">
-					<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Soporte</a>
+					<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Support</a>
 				</li>
 				<li class="menu-item">
-					<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Comprar</a>
+					<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
 				</li>
 			</ul>
 			<!--end::Menu-->
@@ -715,25 +657,8 @@ $(document).ready(function() {
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- libreria para los rgaficos -->
 	<script>
-   $(document).ready(function() {
-      // Inicializamos DataTables en la tabla con id "kt_table_users"
-      $('#kt_table_users').DataTable({
-         "paging": true,           // Activar paginación
-         "ordering": true,         // Activar ordenación por columnas
-         "info": true,             // Mostrar información sobre el total de registros
-         "searching": true,       // Activar búsqueda
-         "language": {
-             "search": "Buscar:",   // Personalizar el texto del buscador
-             "lengthMenu": "Mostrar _MENU_ registros por página",
-             "zeroRecords": "No se encontraron resultados",
-             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-             "infoEmpty": "No hay registros disponibles",
-             "infoFiltered": "(filtrado de _MAX_ registros)"
-         }
-      });
-   });
-</script>
 
+	</script>
 
 
 </body>

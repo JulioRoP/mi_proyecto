@@ -9,6 +9,7 @@ class UsuarioModel extends Model
     protected $table = 'USUARIOS';
     protected $primaryKey = 'ID_USUARIO';
     protected $allowedFields = [
+        'ID_USUARIO',
         'NOMBRE_USUARIO',
         'EMAIL',
         'CONTRASEÑA_HASH',

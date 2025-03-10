@@ -52,13 +52,6 @@ License: For each use you must have a valid license purchased only from above li
 	<link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Global Stylesheets Bundle-->
-	<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
-
-<!-- jQuery y DataTables JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-
 	<style>
 	.aside-logo {
     display: flex; /* Alinea los elementos horizontalmente */
@@ -523,91 +516,90 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Card header-->
 									<!--begin::Card body-->
 									<div class="card-body pt-0">
-    <!--begin::Table-->
-    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-        <thead>
-		<thead>
-    <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-        <th class="min-w-125px">Proveedor</th>
-        <th class="min-w-125px">Productos</th>
-        <th class="min-w-125px">Teléfono</th>
-        <th class="min-w-125px">Email</th>
-        <?php if ($roleName === 'Administrador'): ?>
-            <th class="text-end min-w-100px">Acciones</th>
-        <?php endif; ?>
-    </tr>
-</thead>
+										<!--begin::Table-->
+										<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+											<thead>
+												<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'NOMBRE_PROVEEDOR', 'direccion' => ($ordenarPor == 'NOMBRE_PROVEEDOR' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Proveedor <?= ($ordenarPor == 'NOMBRE_PROVEEDOR') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'TIPO_PRODUCTO', 'direccion' => ($ordenarPor == 'TIPO_PRODUCTO' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Productos <?= ($ordenarPor == 'TIPO_PRODUCTO') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'TELEFONO', 'direccion' => ($ordenarPor == 'TELEFONO' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Teléfono <?= ($ordenarPor == 'TELEFONO') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<th class="min-w-125px">
+														<a href="<?= base_url('proveedores') . '?' . http_build_query(array_merge($_GET, ['ordenar' => 'EMAIL', 'direccion' => ($ordenarPor == 'EMAIL' && $direccion == 'asc') ? 'desc' : 'asc'])) ?>">
+															Email <?= ($ordenarPor == 'EMAIL') ? ($direccion == 'asc' ? '▲' : '▼') : '' ?>
+														</a>
+													</th>
+													<?php if ($roleName === 'Administrador'): ?>
+													<th class="text-end min-w-100px">Acciones</th>
+													<?php endif; ?>
+												</tr>
+											</thead>
+											<tbody class="text-gray-600 fw-bold">
+												<h1 class="text-center">Listado de Proveedores</h1><br><br>
 
-        </thead>
-        <tbody class="text-gray-600 fw-bold">
-            <h1 class="text-center">Listado de Proveedores</h1><br><br>
+												<?php if (session()->getFlashdata('success')): ?>
+													<script>
+														toastr.success('<?= session()->getFlashdata('success'); ?>');
+													</script>
+												<?php endif; ?>
 
-            <?php if (session()->getFlashdata('success')): ?>
-                <script>
-                    toastr.success('<?= session()->getFlashdata('success'); ?>');
-                </script>
-            <?php endif; ?>
+												<?php if (!empty($proveedores) && is_array($proveedores)): ?>
+													<?php foreach ($proveedores as $proveedor): ?>
+														<tr>
+															<td>
+																<span class="<?= !is_null($proveedor['FECHA_BAJA']) ? 'text-danger' : '' ?>">
+																	<?= esc($proveedor['NOMBRE_PROVEEDOR']) ?>
+																</span>
+															</td>
+															<td><?= esc($proveedor['TIPO_PRODUCTO']) ?></td>
+															<td><?= esc($proveedor['TELEFONO']) ?></td>
+															<td><?= esc($proveedor['EMAIL']) ?></td>
+															<td class="text-end">
+																<?php if ($roleName === 'Administrador'): ?>
+																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+																		Modificar
+																	</a>
+																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('proveedores/save/' . $proveedor['ID_PROVEEDOR']) ?>" class="menu-link px-3">Editar</a>
+																		</div>
+																		<div class="menu-item px-3">
+																			<a href="<?= base_url('proveedores/baja/' . esc($proveedor['ID_PROVEEDOR'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($proveedor['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este proveedor?');">
+																				<?= is_null($proveedor['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
+																			</a>
+																		</div>
+																	</div>
+																<?php endif; ?>
+															</td>
+														</tr>
+													<?php endforeach; ?>
+												<?php else: ?>
+													<tr>
+														<td colspan="6" class="text-center">No hay proveedores registrados.</td>
+													</tr>
+												<?php endif; ?>
+											</tbody>
+										</table>
 
-            <?php if (!empty($proveedores) && is_array($proveedores)): ?>
-                <?php foreach ($proveedores as $proveedor): ?>
-                    <tr>
-                        <td>
-                            <span class="<?= !is_null($proveedor['FECHA_BAJA']) ? 'text-danger' : '' ?>">
-                                <?= esc($proveedor['NOMBRE_PROVEEDOR']) ?>
-                            </span>
-                        </td>
-                        <td><?= esc($proveedor['TIPO_PRODUCTO']) ?></td>
-                        <td><?= esc($proveedor['TELEFONO']) ?></td>
-                        <td><?= esc($proveedor['EMAIL']) ?></td>
-                        <td class="text-end">
-                            <?php if ($roleName === 'Administrador'): ?>
-                                <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    Modificar
-                                </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a href="<?= base_url('proveedores/save/' . $proveedor['ID_PROVEEDOR']) ?>" class="menu-link px-3">Editar</a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a href="<?= base_url('proveedores/baja/' . esc($proveedor['ID_PROVEEDOR'])) ?>" class="menu-link px-3" onclick="return confirm('¿Estás seguro de <?= is_null($proveedor['FECHA_BAJA']) ? 'dar de baja' : 'dar de alta' ?> este proveedor?');">
-                                            <?= is_null($proveedor['FECHA_BAJA']) ? 'Dar de baja' : 'Dar de alta' ?>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="6" class="text-center">No hay proveedores registrados.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <!--end::Table-->
+										<!--end::Table-->
 
-    <!-- -----------Paginación------------ -->
-    <div class="mt-4">
-        <?= $pager->links('default', 'custom_pagination') ?>
-    </div>
-</div>
+										<!-- -----------Paginación------------ -->
+										<div class="mt-4">
+											<?= $pager->links('default', 'custom_pagination') ?>
+										</div>
+									</div>
 
-<script> 
-$(document).ready(function() {
-    $('#kt_table_users').DataTable({
-        "order": [[0, 'asc']],  // Ordena por la primera columna (Proveedor) de forma ascendente al cargar la tabla.
-        "processing": true,
-        "serverSide": true,  // Habilitar para carga de datos en el servidor
-        "ajax": {
-            "url": "<?= base_url('proveedores/get_data') ?>",  // Ruta para cargar los datos del servidor
-            "type": "GET"
-        },
-        "pageLength": 10  // Número de filas por página
-    });
-});
-
-</script>
 									<!--end::Card body-->
 								</div>
 								<!--end::Card-->
@@ -715,25 +707,8 @@ $(document).ready(function() {
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- libreria para los rgaficos -->
 	<script>
-   $(document).ready(function() {
-      // Inicializamos DataTables en la tabla con id "kt_table_users"
-      $('#kt_table_users').DataTable({
-         "paging": true,           // Activar paginación
-         "ordering": true,         // Activar ordenación por columnas
-         "info": true,             // Mostrar información sobre el total de registros
-         "searching": true,       // Activar búsqueda
-         "language": {
-             "search": "Buscar:",   // Personalizar el texto del buscador
-             "lengthMenu": "Mostrar _MENU_ registros por página",
-             "zeroRecords": "No se encontraron resultados",
-             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-             "infoEmpty": "No hay registros disponibles",
-             "infoFiltered": "(filtrado de _MAX_ registros)"
-         }
-      });
-   });
-</script>
 
+	</script>
 
 
 </body>
